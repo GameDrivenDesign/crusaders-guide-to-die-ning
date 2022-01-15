@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://models/crystal.material" type="Material" id=1]
 [ext_resource path="res://models/rockTrack.material" type="Material" id=2]
 [ext_resource path="res://models/rock.material" type="Material" id=3]
+[ext_resource path="res://crystal/crystal.gd" type="Script" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "rock_crystalsLargeA_Mesh rock_crystalsLargeA"
@@ -44,9 +45,10 @@ surfaces/2 = {
 }
 
 [sub_resource type="CylinderShape" id=2]
-radius = 0.989079
+radius = 0.805793
 
 [node name="crystal" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="rock_crystalsLargeA2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0799592, -1.19209e-07, 0.0380836 )
@@ -60,3 +62,6 @@ material/2 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
