@@ -5,6 +5,8 @@ onready var plane = Plane(Vector3(0, 1, 0), 0)
 var pointA = null
 var pointB = null
 
+var nav_mesh_height = Vector3(0, 0.2, 0)
+
 func _process(delta):
 	if not Input.is_action_just_pressed("mouseDown"):
 		return
@@ -14,31 +16,6 @@ func _process(delta):
 	var position3D = plane.intersects_ray(
 						 camera.project_ray_origin(position2D),
 						 camera.project_ray_normal(position2D))
-	position3D = $Level/Navigation.get_closest_point(position3D) - Vector3(0, 0.25, 0)
-	if pointA:
-		pointB = position3D
-		_update_path()
-	else:
-		pointA = position3D
+	position3D = $Navigation.get_closest_point(position3D) - nav_mesh_height
 	$astronaut.translation = position3D
-	print(position3D)
 
-func _update_path():
-	var p = $Level/Navigation.get_simple_path(pointA, pointB, true)
-	var path = Array(p)
-	print(path)
-	path.invert()
-	
-	var im = ImmediateGeometry.new()
-	add_child(im)
-	
-	im.clear()
-	im.set_material_override(SpatialMaterial.new())
-	im.begin(Mesh.PRIMITIVE_POINTS, null)
-	im.add_vertex(pointA + Vector3(0, 1, 0))
-	im.add_vertex(pointB + Vector3(0, 1, 0))
-	im.end()
-	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	for x in p:
-		im.add_vertex(x + Vector3(0, 1, 0))
-	im.end()
