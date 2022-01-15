@@ -1,5 +1,5 @@
 extends KinematicBody
-export var speed = 5
+export var speed = 2
 var direction = Vector3(0,0,0)
 
 var old_position = Vector3(0,0,0)
