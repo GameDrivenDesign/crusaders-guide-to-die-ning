@@ -2,6 +2,8 @@ extends KinematicBody
 export var speed = 5
 var direction = Vector3(0,0,0)
 
+var old_position = Vector3(0,0,0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
@@ -28,6 +30,14 @@ func _process(delta):
 		$AnimationPlayer.play("Walking")
 	else:
 		$AnimationPlayer.play("Idle")
+		
+	# camera movement
+	var camera = get_viewport().get_camera()
+	var pos_delta = self.translation - old_position
+	
+	old_position = self.translation
+	
+	camera.translation += pos_delta
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		spawn_tower()
