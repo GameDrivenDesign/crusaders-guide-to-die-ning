@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/multiplayer/NetworkGame.gd" type="Script" id=1]
 [ext_resource path="res://alien/alien.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/game.gd" type="Script" id=3]
 [ext_resource path="res://levels/level_with_nav.tscn" type="PackedScene" id=4]
-[ext_resource path="res://astronaut/astronaut.tscn" type="PackedScene" id=5]
 
 [node name="NetworkGame" type="Node"]
 script = ExtResource( 1 )
@@ -14,10 +13,6 @@ player_scene = ExtResource( 2 )
 
 [node name="game" type="Spatial" parent="."]
 script = ExtResource( 3 )
-
-[node name="astronaut" parent="game" instance=ExtResource( 5 )]
-transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.04863, 0, 1.18837 )
-targetNode = NodePath("../base_target")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="game"]
 transform = Transform( 0.855898, 0.493938, 0.153181, -0.0861808, -0.15583, 0.984017, 0.509913, -0.85542, -0.0908067, 0, 0, 0 )
