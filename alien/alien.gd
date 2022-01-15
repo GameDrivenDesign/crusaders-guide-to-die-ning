@@ -7,19 +7,22 @@ func _ready():
 
 func _process(delta):
 	var moving = false
+	var direction = Vector3(0, 0, 0)
 	if Input.is_action_pressed("ui_up"):
 		moving = true
-		move_and_slide(Vector3(0,0,speed))
+		direction += Vector3(speed,0,0)
 	if Input.is_action_pressed("ui_down"):
 		moving = true
-		move_and_slide(Vector3(0,0,-speed))
+		direction += Vector3(-speed,0,0)
 	if Input.is_action_pressed("ui_left"):
 		moving = true
-		move_and_slide(Vector3(speed,0,0))
+		direction += Vector3(0,0,-speed)
 	if Input.is_action_pressed("ui_right"):
 		moving = true
-		move_and_slide(Vector3(-speed,0,0))
+		direction += Vector3(0,0,speed)
 	if moving == true:
+		move_and_slide(direction)
+		look_at(direction + global_transform.origin, Vector3.UP)
 		$AnimationPlayer.play("Walking")
 	else:
 		$AnimationPlayer.play("Idle")
