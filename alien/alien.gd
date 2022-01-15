@@ -15,6 +15,8 @@ func _ready():
 
 func _process(delta):
 	status = "Idle"
+	if crystals > 0:
+		status = "IdleCarrying"
 	var moving = false
 	var new_direction = Vector3(0,0,0)
 	if Input.is_action_pressed("ui_up"):
@@ -33,7 +35,10 @@ func _process(delta):
 		direction = new_direction.normalized()
 		move_and_slide(direction * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
-		status = "Walking"
+		if crystals == 0:
+			status = "Walking"
+		else:
+			status = "Carrying"
 		
 	# camera movement
 	var camera = get_viewport().get_camera()
@@ -46,16 +51,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		spawn_tower()
 
-	if collecting > 0:
+	if collecting > 0 and not moving:
 		status = "Pickaxing"
+		var emerald_offset = 0.2
 		collecting_time += delta
 		if collecting_time > collecting_time_total:
-			crystals += 1
+			get_crystal()
 			collecting_time -= collecting_time_total
 	
+	$Spatial/armRight/toolPickaxe.set_visible(status == "Pickaxing")
 	$AnimationPlayer.play(status)
-	
-	
+		
 
 func spawn_tower():
 	var offset = 1
@@ -66,7 +72,16 @@ func spawn_tower():
 
 func start_collecting():
 	collecting += 1
-		
+
 	
 func stop_collecting():
 	collecting -= 1
+
+
+func get_crystal():
+	var vertical_space = 0.07
+	var emerald_node = preload("res://crystal/emerald.tscn").instance()
+	emerald_node.transform.origin.y = vertical_space * crystals
+	$Spatial/emeraldPlate.add_child(emerald_node)
+	crystals += 1
+	

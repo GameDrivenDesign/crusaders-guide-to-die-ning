@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://models/dark.material" type="Material" id=1]
 [ext_resource path="res://alien/alien.gd" type="Script" id=2]
@@ -7,6 +7,107 @@
 [ext_resource path="res://models/crystal.material" type="Material" id=5]
 [ext_resource path="res://models/metal.material" type="Material" id=6]
 [ext_resource path="res://alien/toolPickaxe.glb" type="PackedScene" id=7]
+[ext_resource path="res://crystal/emerald.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=12]
+resource_name = "Carrying"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/head:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.007, 0.5, 0 ), Vector3( 0.007, 0.5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -10 ), Vector3( 0, 0, 10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 45, 0, 0 ), Vector3( -45, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -45, 0, 0 ), Vector3( 45, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 7, 0 ), Vector3( 80, 7, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, -7, 0 ), Vector3( 80, -7, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Spatial/body:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -5, 0, 0 ), Vector3( 5, 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.00430919, 0.510627, -0.350338 ), Vector3( -0.004, 0.449, -0.35 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "Idle"
@@ -83,6 +184,95 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 1.32509 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "IdleCarrying"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.069, 0, 10 ), Vector3( -0.069, 0, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/body:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 5 ), Vector3( 0, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 80, -8, -8.099 ), Vector3( 85, -8, -8.099 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 80, 8, 1.325 ), Vector3( 85, 8, 1.325 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.004, 0.449, -0.35 ), Vector3( -0.004, 0.476391, -0.35 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -183,6 +373,18 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.451199, 0.110424, -0.281626 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -293,6 +495,18 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( -0.0020051, 0.223184, -0.00497615 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.00430919, 0.241198, -0.170722 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -625,7 +839,9 @@ height = 0.19358
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Carrying = SubResource( 12 )
 anims/Idle = SubResource( 11 )
+anims/IdleCarrying = SubResource( 13 )
 anims/Pickaxing = SubResource( 9 )
 anims/RESET = SubResource( 7 )
 anims/Walking = SubResource( 8 )
@@ -643,6 +859,7 @@ material/2 = null
 
 [node name="toolPickaxe" parent="Spatial/armRight" instance=ExtResource( 7 )]
 transform = Transform( -0.207888, -0.0436685, -0.452632, 0.451492, 0.0395005, -0.211175, 0.0542018, -0.496521, 0.0230086, 0.00260163, -0.279446, 0.0160802 )
+visible = false
 
 [node name="armLeft" type="MeshInstance" parent="Spatial"]
 transform = Transform( 0.853409, 0.0869782, 0.0312986, 0, 0.290646, -0.807698, -0.0924382, 0.803001, 0.288956, -0.132005, 0.473184, -0.00497615 )
@@ -683,6 +900,12 @@ skeleton = NodePath("")
 material/0 = null
 material/1 = null
 material/2 = null
+
+[node name="emeraldPlate" type="Spatial" parent="Spatial"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00430919, 0.241198, -0.170722 )
+
+[node name="Spatial" parent="Spatial/emeraldPlate" instance=ExtResource( 8 )]
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.193511, 0 )
