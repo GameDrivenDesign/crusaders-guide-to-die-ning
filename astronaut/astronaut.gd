@@ -8,6 +8,9 @@ export var health = 10.0
 func damage(amount):
 	health -= amount
 	if health <= 0:
+		var particles = preload("res://astronaut/DeathParticles.tscn").instance()
+		get_parent().add_child(particles)
+		particles.global_transform = global_transform
 		queue_free()
 
 func _physics_process(delta):
