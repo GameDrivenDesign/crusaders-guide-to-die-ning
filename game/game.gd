@@ -5,7 +5,7 @@ onready var plane = Plane(Vector3(0, 1, 0), 0)
 var pointA = null
 var pointB = null
 
-var nav_mesh_height = Vector3(0, 0.2, 0)
+var nav_mesh_height = Vector3(0, 0.1, 0)
 
 func _process(delta):
 	if not Input.is_action_just_pressed("mouseDown"):
