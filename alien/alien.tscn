@@ -294,6 +294,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector3( -0.0020051, 0.223184, -0.00497615 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Spatial/armLeft:translation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.132005, 0.473184, -0.00497615 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Walking"
@@ -618,8 +630,8 @@ surfaces/2 = {
 }
 
 [sub_resource type="CapsuleShape" id=10]
-radius = 0.0896881
-height = 0.19358
+radius = 0.218646
+height = 0.370287
 
 [node name="alien" type="KinematicBody"]
 script = ExtResource( 2 )

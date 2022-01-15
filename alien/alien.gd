@@ -1,5 +1,6 @@
 extends KinematicBody
 export var speed = 5
+var direction = Vector3(0,0,0)
 
 var old_position = Vector3(0,0,0)
 
@@ -9,21 +10,22 @@ func _ready():
 
 func _process(delta):
 	var moving = false
-	var direction = Vector3(0, 0, 0)
+	var new_direction = Vector3(0,0,0)
 	if Input.is_action_pressed("ui_up"):
 		moving = true
-		direction += Vector3(speed,0,0)
+		new_direction += Vector3(1,0,0)
 	if Input.is_action_pressed("ui_down"):
 		moving = true
-		direction += Vector3(-speed,0,0)
+		new_direction += Vector3(-1,0,0)
 	if Input.is_action_pressed("ui_left"):
 		moving = true
-		direction += Vector3(0,0,-speed)
+		new_direction += Vector3(0,0,-1)
 	if Input.is_action_pressed("ui_right"):
 		moving = true
-		direction += Vector3(0,0,speed)
+		new_direction += Vector3(0,0,1)
 	if moving == true:
-		move_and_slide(direction)
+		direction = new_direction.normalized()
+		move_and_slide(direction * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		$AnimationPlayer.play("Walking")
 	else:
@@ -36,7 +38,13 @@ func _process(delta):
 	old_position = self.translation
 	
 	camera.translation += pos_delta
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		spawn_tower()
 
 
-#void play(name: String = "", custom_blend: float = -1, custom_speed: float = 1.0, from_end: bool = false)
-
+func spawn_tower():
+	var offset = 1
+	var tower_node = preload("res://scenes/Tower.tscn").instance()
+	get_parent().add_child(tower_node)
+	tower_node.global_transform.origin = global_transform.origin + direction * offset
