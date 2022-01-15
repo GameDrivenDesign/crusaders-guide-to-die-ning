@@ -3,7 +3,7 @@
 [ext_resource path="res://astronaut/DeathParticles.gd" type="Script" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.388235, 0.027451, 0.027451, 1 )
+albedo_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 material = SubResource( 1 )

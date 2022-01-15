@@ -23,8 +23,8 @@ func _ready():
 remotesync func spawn_food(pos):
 	var p = preload("res://models/food/food_explosion.tscn").instance()
 	p.scale = Vector3(0.3, 0.3, 0.3)
-	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 	get_parent().add_child(p)
+	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
 func _physics_process(delta):
 	var target = get_node(targetNode).global_transform.origin
