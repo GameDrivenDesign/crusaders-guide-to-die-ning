@@ -14,9 +14,16 @@ func damage(amount):
 func _ready():
 	$AnimationPlayer.play("Walking")
 
+remotesync func spawn_food(pos):
+	var p = preload("res://models/food/food_explosion.tscn").instance()
+	p.scale = Vector3(0.3, 0.3, 0.3)
+	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
+	get_parent().add_child(p)
+
 func _physics_process(delta):
 	var target = get_node(targetNode).global_transform.origin
 	if target.distance_to(global_transform.origin) < 3:
+		rpc("spawn_food", global_transform.origin)
 		$Sync.remove()
 		return
 	
