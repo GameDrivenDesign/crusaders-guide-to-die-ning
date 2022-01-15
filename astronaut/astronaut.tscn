@@ -308,5 +308,5 @@ shape = SubResource( 7 )
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource( 9 )
-interpolated_synced = PoolStringArray( "transform" )
+unreliable_synced = PoolStringArray( "transform" )
 process_only_network_master = true

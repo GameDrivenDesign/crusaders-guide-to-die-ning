@@ -45,7 +45,7 @@ surfaces/2 = {
 }
 
 [sub_resource type="CylinderShape" id=2]
-radius = 0.805793
+radius = 0.989079
 
 [node name="crystal" type="Spatial"]
 script = ExtResource( 4 )
