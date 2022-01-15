@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/dark.material" type="Material" id=1]
 [ext_resource path="res://alien/alien.gd" type="Script" id=2]
@@ -540,7 +540,11 @@ surfaces/2 = {
 "vertex_count": 54
 }
 
-[node name="alien" type="Spatial"]
+[sub_resource type="CapsuleShape" id=10]
+radius = 0.218646
+height = 0.370287
+
+[node name="alien" type="KinematicBody"]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -600,3 +604,7 @@ skeleton = NodePath("")
 material/0 = null
 material/1 = null
 material/2 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.409602, 0 )
+shape = SubResource( 10 )
