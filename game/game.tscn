@@ -31,7 +31,7 @@ current = true
 fov = 67.7
 
 [node name="base_target" type="Spatial" parent="game"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453167, -4.76837e-07, 20.7982 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95275, -4.76837e-07, 24.8316 )
 
 [node name="Navigation" type="Navigation" parent="game"]
 
