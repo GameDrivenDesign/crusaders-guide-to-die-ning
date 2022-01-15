@@ -6,12 +6,19 @@ var speed = 1
 export var health = 10.0
 
 func damage(amount):
-	health -= amount
-	if health <= 0:
-		var particles = preload("res://astronaut/DeathParticles.tscn").instance()
-		get_parent().add_child(particles)
-		particles.global_transform = global_transform
-		queue_free()
+	if is_network_master():
+		health -= amount
+		if health <= 0:
+			rpc("_spawn_particles", global_transform)
+			$Sync.remove()
+
+remotesync func _spawn_particles(position):
+	var particles = preload("res://astronaut/DeathParticles.tscn").instance()
+	get_parent().add_child(particles)
+	particles.global_transform = position
+
+func _ready():
+	$AnimationPlayer.play("Walking")
 
 func _physics_process(delta):
 	var target = get_node(targetNode).global_transform.origin
