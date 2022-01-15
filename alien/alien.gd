@@ -101,6 +101,6 @@ func get_crystal():
 	var vertical_space = 0.07
 	var emerald_node = preload("res://crystal/emerald.tscn").instance()
 	emerald_node.transform.origin.y = vertical_space * crystals
-	$Spatial/emeraldPlate.add_child(emerald_node)
+	$model/emeraldPlate.add_child(emerald_node)
 	crystals += 1
 	
