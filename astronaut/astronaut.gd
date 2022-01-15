@@ -6,9 +6,13 @@ var speed = 1
 export var health = 10.0
 
 func damage(amount):
-	health -= amount
-	if health <= 0:
-		queue_free()
+	if is_network_master():
+		health -= amount
+		if health <= 0:
+			$Sync.remove()
+
+func _ready():
+	$AnimationPlayer.play("Walking")
 
 func _physics_process(delta):
 	var target = get_node(targetNode).global_transform.origin

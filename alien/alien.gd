@@ -77,9 +77,9 @@ func _process(delta):
 func spawn_tower():
 	var offset = 1
 	var tower_node = preload("res://scenes/Tower.tscn").instance()
-	get_parent().add_child(tower_node)
+	tower_node.set_network_master(get_network_master())
 	tower_node.global_transform.origin = global_transform.origin + direction * offset
-
+	get_parent().add_child(tower_node)
 
 func start_collecting():
 	collecting += 1

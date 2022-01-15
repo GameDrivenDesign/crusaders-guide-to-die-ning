@@ -186,7 +186,7 @@ tracks/7/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("model/head:translation")
 tracks/0/interp = 1
@@ -628,7 +628,7 @@ script = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 11 )
 anims/Pickaxing = SubResource( 9 )
-anims/RESET = SubResource( 7 )
+anims/RESET = SubResource( 12 )
 anims/Walking = SubResource( 8 )
 
 [node name="model" type="Spatial" parent="."]
