@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://new_meshlibrary.tres" type="MeshLibrary" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.25
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Navigation"]
+mesh_library = ExtResource( 1 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 0, 1, 11, 1, 1, 2, 65534, 1, 6, 65535, 1, 11, 0, 2, 8, 1, 2, 1, 65535, 2, 6, 0, 3, 1048588, 65535, 3, 6, 65535, 4, 6, 65535, 5, 6, 65533, 6, 1048588, 65534, 6, 10, 65535, 6, 12, 65532, 7, 1048588, 65533, 7, 1048585 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886375, 3, 2.80864 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -2, 2, 0 )
