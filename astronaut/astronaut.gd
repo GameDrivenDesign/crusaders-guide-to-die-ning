@@ -2,10 +2,17 @@ extends KinematicBody
 
 export(NodePath) var targetNode
 
+export var health = 10.0
+
 func _physics_process(delta):
 	# var p = get_nav()
 	# print(p)
 	pass
+
+func damage(amount):
+	health -= amount
+	if health <= 0:
+		queue_free()
 
 func get_nav():
 	var nav = $"../Level/Navigation"
