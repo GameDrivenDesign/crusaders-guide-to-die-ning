@@ -9,7 +9,13 @@ func damage(amount):
 	if is_network_master():
 		health -= amount
 		if health <= 0:
+			rpc("_spawn_particles", global_transform)
 			$Sync.remove()
+
+remotesync func _spawn_particles(position):
+	var particles = preload("res://astronaut/DeathParticles.tscn").instance()
+	get_parent().add_child(particles)
+	particles.global_transform = position
 
 func _ready():
 	$AnimationPlayer.play("Walking")
