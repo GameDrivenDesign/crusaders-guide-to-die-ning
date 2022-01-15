@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/food/apple.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/food/cookie.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://models/food/iceCream.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://models/food/sodaCan.mesh" type="ArrayMesh" id=4]
+
+[node name="food_explosion" type="Spatial"]
+
+[node name="apples" type="CPUParticles" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+amount = 3
+explosiveness = 0.87
+local_coords = false
+mesh = ExtResource( 1 )
+flag_align_y = true
+flag_rotate_y = true
+spread = 29.18
+initial_velocity = 10.0
+angle = 10.0
+angle_random = 0.51
+scale_amount = 0.5
+
+[node name="cookies" type="CPUParticles" parent="."]
+transform = Transform( -1.93663e-08, -0.277784, -0.960644, 1, 7.54979e-08, -4.19911e-08, 8.4191e-08, -0.960644, 0.277784, 0, 0, 0 )
+amount = 3
+explosiveness = 0.87
+local_coords = false
+mesh = ExtResource( 2 )
+flag_align_y = true
+flag_rotate_y = true
+spread = 29.18
+initial_velocity = 10.0
+angle = 10.0
+angle_random = 0.51
+scale_amount = 0.5
+
+[node name="icecream" type="CPUParticles" parent="."]
+transform = Transform( 0.0718958, -0.268319, -0.960644, 0.965926, 0.258819, -4.14744e-08, 0.248633, -0.92791, 0.277784, 0, 0, 0 )
+amount = 2
+explosiveness = 1.0
+local_coords = false
+mesh = ExtResource( 3 )
+flag_rotate_y = true
+spread = 29.18
+initial_velocity = 10.0
+initial_velocity_random = 0.22
+angle = 90.0
+angle_random = 0.51
+scale_amount = 0.5
+
+[node name="sodacan" type="CPUParticles" parent="."]
+transform = Transform( -0.154042, -0.23116, -0.960644, 0.832157, -0.55454, -6.21378e-08, -0.532715, -0.799407, 0.277784, 0, 0, 0 )
+amount = 2
+explosiveness = 0.87
+local_coords = false
+mesh = ExtResource( 4 )
+flag_rotate_y = true
+spread = 29.18
+initial_velocity = 10.0
+initial_velocity_random = 0.22
+angle = 90.0
+angle_random = 0.51
+scale_amount = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.9
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]
