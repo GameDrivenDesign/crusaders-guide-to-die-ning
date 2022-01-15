@@ -431,7 +431,7 @@ tracks/6/keys = {
 script = ExtResource( 2 )
 
 [node name="armLeft" type="MeshInstance" parent="."]
-transform = Transform( 0.853409, 0.0869782, 0.0312987, 0, 0.290646, -0.807698, -0.0924382, 0.803001, 0.288956, -0.132005, 0.473184, -0.00497615 )
+transform = Transform( 0.853409, 0.0869782, 0.0312986, 0, 0.290646, -0.807698, -0.0924382, 0.803001, 0.288956, -0.132005, 0.473184, -0.00497615 )
 mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null

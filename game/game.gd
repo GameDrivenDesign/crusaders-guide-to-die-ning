@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var plane = Plane(Vector3(0, 1, 0), -0.75)
+onready var plane = Plane(Vector3(0, 1, 0), 0)
 
 var pointA = null
 var pointB = null
@@ -14,7 +14,7 @@ func _process(delta):
 	var position3D = plane.intersects_ray(
 						 camera.project_ray_origin(position2D),
 						 camera.project_ray_normal(position2D))
-	position3D = $Level/Navigation.get_closest_point(position3D)
+	position3D = $Level/Navigation.get_closest_point(position3D) - Vector3(0, 0.25, 0)
 	if pointA:
 		pointB = position3D
 		_update_path()
