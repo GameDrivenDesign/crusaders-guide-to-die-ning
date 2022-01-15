@@ -5,8 +5,18 @@ export(NodePath) var targetNode
 var speed = 1
 export var health = 10.0
 
+func damage(amount):
+	health -= amount
+	if health <= 0:
+		queue_free()
+
 func _physics_process(delta):
-	var p = get_nav()
+	var target = get_node(targetNode).global_transform.origin
+	if target.distance_to(global_transform.origin) < 3:
+		$Sync.remove()
+		return
+	
+	var p = get_nav(target)
 	if p.size() > 0:
 		var next = next_point(p)
 		if next:
@@ -22,21 +32,15 @@ func next_point(path):
 			return p
 	return null
 
-func damage(amount):
-	health -= amount
-	if health <= 0:
-		queue_free()
-
-func get_nav():
+func get_nav(target):
 	var nav = $"../Navigation"
-	var target = get_node(targetNode).global_transform.origin
-	
 	var start = nav.get_closest_point(global_transform.origin)
 	var end = nav.get_closest_point(target)
 	var path = nav.get_simple_path(start, end, true)
 	# show_path(path)
 	return path
 
+# helper
 var current_path
 func show_path(p):
 	if current_path:

@@ -8,14 +8,12 @@ var pointB = null
 var nav_mesh_height = Vector3(0, 0.1, 0)
 
 func _process(delta):
-	if not Input.is_action_just_pressed("mouseDown"):
-		return
-	
-	var position2D = get_viewport().get_mouse_position()
-	var camera = get_viewport().get_camera()
-	var position3D = plane.intersects_ray(
-						 camera.project_ray_origin(position2D),
-						 camera.project_ray_normal(position2D))
-	position3D = $Navigation.get_closest_point(position3D) - nav_mesh_height
-	$astronaut.translation = position3D
-
+	if is_network_master():
+		if int(rand_range(0, 5)) == 0:
+			var positions = $EnemySpawnPoints.get_children()
+			var position = positions[int(rand_range(0, positions.size()))]
+			
+			var enemy = preload("res://astronaut/astronaut.tscn").instance()
+			enemy.global_transform = position.global_transform
+			enemy.targetNode = $base_target.get_path()
+			add_child(enemy)
