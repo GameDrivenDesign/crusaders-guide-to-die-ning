@@ -3,6 +3,7 @@ extends KinematicBody
 export(NodePath) var targetNode
 
 var speed = 100
+export var health = 10.0
 
 func _physics_process(delta):
 	var p = get_nav()
@@ -10,6 +11,11 @@ func _physics_process(delta):
 		print(p)
 		look_at(p[1], Vector3(0, 1, 0))
 		# move_and_slide(Vector3(0, speed, 0), Vector3(0, 1, 0))
+
+func damage(amount):
+	health -= amount
+	if health <= 0:
+		queue_free()
 
 func get_nav():
 	var nav = $"../Navigation"

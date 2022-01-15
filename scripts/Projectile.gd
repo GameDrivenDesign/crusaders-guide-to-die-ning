@@ -2,6 +2,7 @@ extends KinematicBody
 
 var velocity: Vector3 setget set_velocity
 export var lifetime = 3
+var damage = 2.0
 
 func _physics_process(delta):
 	lifetime -= delta
@@ -13,7 +14,9 @@ func _physics_process(delta):
 		collided_with(collision.collider)
 
 func collided_with(body):
-	queue_free()
+	if body.is_in_group("enemy"):
+		body.damage(damage)
+		queue_free()
 
 func set_velocity(new_velocity):
 	velocity = new_velocity

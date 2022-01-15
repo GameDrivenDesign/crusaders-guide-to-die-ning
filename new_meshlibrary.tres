@@ -700,8 +700,12 @@ item/12/preview = SubResource( 47 )
 item/13/name = "terrain_roadRampLarge_detailed2"
 item/13/mesh = SubResource( 1 )
 item/13/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-item/13/shapes = [  ]
+item/13/shapes = [ SubResource( 15 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]
 item/13/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+item/14/name = ""
+item/14/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+item/14/shapes = [  ]
+item/14/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 __meta__ = {
 "_editor_source_scene": "res://models.tscn"
 }

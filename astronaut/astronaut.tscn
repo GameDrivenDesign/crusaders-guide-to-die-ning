@@ -247,7 +247,7 @@ surfaces/2 = {
 radius = 0.105769
 height = 0.190701
 
-[node name="astronautA" type="KinematicBody"]
+[node name="astronautA" type="KinematicBody" groups=["enemy"]]
 script = ExtResource( 8 )
 
 [node name="Spatial" type="Spatial" parent="."]
