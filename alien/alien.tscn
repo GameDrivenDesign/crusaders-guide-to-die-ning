@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://models/dark.material" type="Material" id=1]
 [ext_resource path="res://alien/alien.gd" type="Script" id=2]
@@ -8,12 +8,13 @@
 [ext_resource path="res://models/metal.material" type="Material" id=6]
 [ext_resource path="res://alien/toolPickaxe.glb" type="PackedScene" id=7]
 [ext_resource path="res://crystal/emerald.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/multiplayer/Sync.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=12]
 resource_name = "Carrying"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/head:translation")
+tracks/0/path = NodePath("model/head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -25,7 +26,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.007, 0.5, 0 ), Vector3( 0.007, 0.5, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/head:rotation_degrees")
+tracks/1/path = NodePath("model/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -37,7 +38,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, -10 ), Vector3( 0, 0, 10 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/2/path = NodePath("model/legRight:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -49,7 +50,7 @@ tracks/2/keys = {
 "values": [ Vector3( 45, 0, 0 ), Vector3( -45, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/path = NodePath("model/legLeft:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -61,7 +62,7 @@ tracks/3/keys = {
 "values": [ Vector3( -45, 0, 0 ), Vector3( 45, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/4/path = NodePath("model/armRight:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -73,7 +74,7 @@ tracks/4/keys = {
 "values": [ Vector3( 90, 7, 0 ), Vector3( 80, 7, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/5/path = NodePath("model/armLeft:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -85,7 +86,7 @@ tracks/5/keys = {
 "values": [ Vector3( 90, -7, 0 ), Vector3( 80, -7, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Spatial/body:rotation_degrees")
+tracks/6/path = NodePath("model/body:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -97,7 +98,7 @@ tracks/6/keys = {
 "values": [ Vector3( -5, 0, 0 ), Vector3( 5, 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/7/path = NodePath("model/emeraldPlate:translation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -114,7 +115,7 @@ resource_name = "Idle"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/head:rotation_degrees")
+tracks/0/path = NodePath("model/head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -126,7 +127,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.069, 0, 10 ), Vector3( -0.069, 0, -10 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/body:rotation_degrees")
+tracks/1/path = NodePath("model/body:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -138,7 +139,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 5 ), Vector3( 0, 0, -5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/2/path = NodePath("model/armLeft:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -150,7 +151,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, -8.09858 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/path = NodePath("model/legLeft:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -162,7 +163,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/4/path = NodePath("model/legRight:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -174,7 +175,7 @@ tracks/4/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/5/path = NodePath("model/armRight:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -191,7 +192,7 @@ resource_name = "IdleCarrying"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/head:rotation_degrees")
+tracks/0/path = NodePath("model/head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -203,7 +204,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.069, 0, 10 ), Vector3( -0.069, 0, -10 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/body:rotation_degrees")
+tracks/1/path = NodePath("model/body:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -215,7 +216,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 5 ), Vector3( 0, 0, -5 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/2/path = NodePath("model/armLeft:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -227,7 +228,7 @@ tracks/2/keys = {
 "values": [ Vector3( 80, -8, -8.099 ), Vector3( 85, -8, -8.099 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/path = NodePath("model/legLeft:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -239,7 +240,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/4/path = NodePath("model/legRight:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -251,7 +252,7 @@ tracks/4/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/5/path = NodePath("model/armRight:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -263,7 +264,7 @@ tracks/5/keys = {
 "values": [ Vector3( 80, 8, 1.325 ), Vector3( 85, 8, 1.325 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/6/path = NodePath("model/emeraldPlate:translation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -279,7 +280,7 @@ tracks/6/keys = {
 resource_name = "Pickaxing"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/0/path = NodePath("model/armRight:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -291,7 +292,7 @@ tracks/0/keys = {
 "values": [ Vector3( 80, 0, -25 ), Vector3( 120, 0, -25 ), Vector3( 20, 0, -25 ), Vector3( 80, 0, -25 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/1/path = NodePath("model/armLeft:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -303,7 +304,7 @@ tracks/1/keys = {
 "values": [ Vector3( 80, 0, 30 ), Vector3( 120, 0, 30 ), Vector3( 20, 0, 30 ), Vector3( 80, 0, 30 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/head:translation")
+tracks/2/path = NodePath("model/head:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -315,7 +316,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0.007, 0.5, 0 ), Vector3( 0.007, 0.5, 0.0533869 ), Vector3( 0.007, 0.5, 0.0101243 ), Vector3( 0.007, 0.5, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/head:rotation_degrees")
+tracks/3/path = NodePath("model/head:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -327,7 +328,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 12.005, 0, 0 ), Vector3( -6.334, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/body:rotation_degrees")
+tracks/4/path = NodePath("model/body:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -339,7 +340,7 @@ tracks/4/keys = {
 "values": [ Vector3( 5, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( -7, 0, 0 ), Vector3( 5, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/body:translation")
+tracks/5/path = NodePath("model/body:translation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -351,7 +352,7 @@ tracks/5/keys = {
 "values": [ Vector3( -0.0020051, 0.223184, -0.00497615 ), Vector3( -0.0020051, 0.223184, 0.0484208 ), Vector3( -0.0020051, 0.223184, -0.00497615 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/6/path = NodePath("model/legLeft:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -363,7 +364,7 @@ tracks/6/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/7/path = NodePath("model/legRight:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -375,7 +376,7 @@ tracks/7/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/8/path = NodePath("model/emeraldPlate:translation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -389,7 +390,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id=7]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/head:translation")
+tracks/0/path = NodePath("model/head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -401,7 +402,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.00655913, 0.483184, -0.00497615 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/head:rotation_degrees")
+tracks/1/path = NodePath("model/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -413,7 +414,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, -10 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/legRight:translation")
+tracks/2/path = NodePath("model/legRight:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -425,7 +426,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0.127995, 0.223184, -0.00497615 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/3/path = NodePath("model/legRight:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -437,7 +438,7 @@ tracks/3/keys = {
 "values": [ Vector3( -45, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/4/path = NodePath("model/legLeft:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -449,7 +450,7 @@ tracks/4/keys = {
 "values": [ Vector3( -49.918, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/5/path = NodePath("model/armRight:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -461,7 +462,7 @@ tracks/5/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/6/path = NodePath("model/armLeft:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -473,7 +474,7 @@ tracks/6/keys = {
 "values": [ Vector3( 70.209, 6.18197, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Spatial/body:rotation_degrees")
+tracks/7/path = NodePath("model/body:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -485,7 +486,7 @@ tracks/7/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Spatial/body:translation")
+tracks/8/path = NodePath("model/body:translation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -497,7 +498,7 @@ tracks/8/keys = {
 "values": [ Vector3( -0.0020051, 0.223184, -0.00497615 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Spatial/emeraldPlate:translation")
+tracks/9/path = NodePath("model/emeraldPlate:translation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -513,7 +514,7 @@ tracks/9/keys = {
 resource_name = "Walking"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spatial/head:translation")
+tracks/0/path = NodePath("model/head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -525,7 +526,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.007, 0.5, 0 ), Vector3( 0.007, 0.5, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Spatial/head:rotation_degrees")
+tracks/1/path = NodePath("model/head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -537,7 +538,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, -10 ), Vector3( 0, 0, 10 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Spatial/legRight:rotation_degrees")
+tracks/2/path = NodePath("model/legRight:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -549,7 +550,7 @@ tracks/2/keys = {
 "values": [ Vector3( 45, 0, 0 ), Vector3( -45, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Spatial/legLeft:rotation_degrees")
+tracks/3/path = NodePath("model/legLeft:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -561,7 +562,7 @@ tracks/3/keys = {
 "values": [ Vector3( -45, 0, 0 ), Vector3( 45, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Spatial/armRight:rotation_degrees")
+tracks/4/path = NodePath("model/armRight:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -573,7 +574,7 @@ tracks/4/keys = {
 "values": [ Vector3( -80, 0, 0 ), Vector3( 80, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Spatial/armLeft:rotation_degrees")
+tracks/5/path = NodePath("model/armLeft:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -585,7 +586,7 @@ tracks/5/keys = {
 "values": [ Vector3( 90, 6.182, 0 ), Vector3( -90, 6.182, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Spatial/body:rotation_degrees")
+tracks/6/path = NodePath("model/body:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -846,10 +847,10 @@ anims/Pickaxing = SubResource( 9 )
 anims/RESET = SubResource( 7 )
 anims/Walking = SubResource( 8 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="model" type="Spatial" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
-[node name="armRight" type="MeshInstance" parent="Spatial"]
+[node name="armRight" type="MeshInstance" parent="model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133226, 0.459452, -0.00497615 )
 mesh = SubResource( 2 )
 skeleton = NodePath("")
@@ -857,11 +858,11 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="toolPickaxe" parent="Spatial/armRight" instance=ExtResource( 7 )]
+[node name="toolPickaxe" parent="model/armRight" instance=ExtResource( 7 )]
 transform = Transform( -0.207888, -0.0436685, -0.452632, 0.451492, 0.0395005, -0.211175, 0.0542018, -0.496521, 0.0230086, 0.00260163, -0.279446, 0.0160802 )
 visible = false
 
-[node name="armLeft" type="MeshInstance" parent="Spatial"]
+[node name="armLeft" type="MeshInstance" parent="model"]
 transform = Transform( 0.853409, 0.0869782, 0.0312986, 0, 0.290646, -0.807698, -0.0924382, 0.803001, 0.288956, -0.132005, 0.473184, -0.00497615 )
 mesh = SubResource( 1 )
 skeleton = NodePath("")
@@ -869,7 +870,7 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="head" type="MeshInstance" parent="Spatial"]
+[node name="head" type="MeshInstance" parent="model"]
 transform = Transform( 0.25605, 0.0451485, 0, -0.0451485, 0.25605, 0, 0, 0, 0.26, -0.00655913, 0.483184, -0.00497615 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
@@ -877,7 +878,7 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="body" type="MeshInstance" parent="Spatial"]
+[node name="body" type="MeshInstance" parent="model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020051, 0.223184, -0.00497615 )
 mesh = SubResource( 3 )
 skeleton = NodePath("")
@@ -885,7 +886,7 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="legLeft" type="MeshInstance" parent="Spatial"]
+[node name="legLeft" type="MeshInstance" parent="model"]
 transform = Transform( 1, 0, 0, 0, 0.643883, 0.765124, 0, -0.765124, 0.643883, -0.132005, 0.223184, -0.00497615 )
 mesh = SubResource( 5 )
 skeleton = NodePath("")
@@ -893,7 +894,7 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="legRight" type="MeshInstance" parent="Spatial"]
+[node name="legRight" type="MeshInstance" parent="model"]
 transform = Transform( 0.8584, 0, 0, 0, 0.60698, 0.60698, 0, -0.60698, 0.60698, 0.127995, 0.223184, -0.00497615 )
 mesh = SubResource( 6 )
 skeleton = NodePath("")
@@ -901,12 +902,19 @@ material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="emeraldPlate" type="Spatial" parent="Spatial"]
+[node name="emeraldPlate" type="Spatial" parent="model"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00430919, 0.241198, -0.170722 )
 
-[node name="Spatial" parent="Spatial/emeraldPlate" instance=ExtResource( 8 )]
+[node name="Spatial" parent="model/emeraldPlate" instance=ExtResource( 8 )]
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.193511, 0 )
 shape = SubResource( 10 )
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource( 9 )
+initial = PoolStringArray( "color" )
+synced = PoolStringArray( "status" )
+unreliable_synced = PoolStringArray( "transform" )
+process_only_network_master = true

@@ -1,5 +1,5 @@
 extends KinematicBody
-export var speed = 5
+export var speed = 2
 var direction = Vector3(0,0,0)
 
 var old_position = Vector3(0,0,0)
@@ -7,16 +7,35 @@ var collecting = 0
 var crystals = 0
 var collecting_time = 0
 export var collecting_time_total = 2
-var status = "Idle"
+
+var status setget set_status
+var color setget set_color
+
+func set_status(new_status):
+	if new_status != status:
+		status = new_status
+		$AnimationPlayer.play(status)
+
+func set_color(col):
+	color = col
+	var mat = SpatialMaterial.new()
+	mat.albedo_color = col
+	$model/head.set_surface_material(0, mat)
+	$model/armLeft.set_surface_material(0, mat)
+	$model/armRight.set_surface_material(0, mat)
+
+func _network_ready(is_source):
+	if is_source:
+		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
 
 func _process(delta):
-	status = "Idle"
+	var new_status = "Idle"
 	if crystals > 0:
-		status = "IdleCarrying"
+		new_status = "IdleCarrying"
 	var moving = false
 	var new_direction = Vector3(0,0,0)
 	if Input.is_action_pressed("ui_up"):
@@ -36,9 +55,9 @@ func _process(delta):
 		move_and_slide(direction * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		if crystals == 0:
-			status = "Walking"
+			new_status = "Walking"
 		else:
-			status = "Carrying"
+			new_status = "Carrying"
 		
 	# camera movement
 	var camera = get_viewport().get_camera()
@@ -52,20 +71,20 @@ func _process(delta):
 		spawn_tower()
 
 	if collecting > 0 and not moving:
-		status = "Pickaxing"
+		new_status = "Pickaxing"
 		var emerald_offset = 0.2
 		collecting_time += delta
 		if collecting_time > collecting_time_total:
 			get_crystal()
 			collecting_time -= collecting_time_total
 	
-	$Spatial/armRight/toolPickaxe.set_visible(status == "Pickaxing")
-	$AnimationPlayer.play(status)
-		
+	$model/armRight/toolPickaxe.set_visible(new_status == "Pickaxing")
+	set_status(new_status)
 
 func spawn_tower():
 	var offset = 1
 	var tower_node = preload("res://scenes/Tower.tscn").instance()
+	tower_node.set_network_master(get_network_master())
 	get_parent().add_child(tower_node)
 	tower_node.global_transform.origin = global_transform.origin + direction * offset
 
