@@ -39,7 +39,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0453167, -4.76837e-07, 20.79
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0212345, 0, -0.0217981 )
 
 [node name="SpawnPoint" type="Spatial" parent="game"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37502, 0, 1.10984 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.6398 )
 
 [node name="EnemySpawnPoints" type="Spatial" parent="game"]
 
