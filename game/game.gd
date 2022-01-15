@@ -15,5 +15,5 @@ func _process(delta):
 			
 			var enemy = preload("res://astronaut/astronaut.tscn").instance()
 			enemy.global_transform = position.global_transform
-			enemy.targetNode = $base_target.get_path()
 			add_child(enemy)
+			enemy.target_node = $base_target.get_path()

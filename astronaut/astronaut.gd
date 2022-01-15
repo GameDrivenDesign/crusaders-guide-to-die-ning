@@ -1,9 +1,11 @@
 extends KinematicBody
 
-export(NodePath) var targetNode
+export(NodePath) var target_node setget set_target_node
 
 var speed = 1
 export var health = 10.0
+
+var path
 
 func damage(amount):
 	if is_network_master():
@@ -27,27 +29,46 @@ remotesync func spawn_food(pos):
 	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
 func _physics_process(delta):
-	var target = get_node(targetNode).global_transform.origin
+	if not target_node:
+		return
+	var target = get_target_position()
 	if target.distance_to(global_transform.origin) < 3:
 		rpc("spawn_food", global_transform.origin)
 		$Sync.remove()
 		return
 	
-	var p = get_nav(target)
-	if p.size() > 0:
-		var next = next_point(p)
-		if next:
-			next.y = 0
-			var my_pos = global_transform.origin
-			my_pos.y = 0
-			look_at(next, Vector3(0, 1, 0))
-			move_and_slide((next - my_pos).normalized() * speed, Vector3(0, 1, 0))
+	var current_target = get_current_target()
+	if current_target:
+		var my_pos = global_transform.origin
+		look_at(current_target, Vector3(0, 1, 0))
+		move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
+	update_target(delta)
 
-func next_point(path):
-	for p in path:
-		if p.distance_to(global_transform.origin) > 0.3:
-			return p
-	return null
+func get_current_target():
+	if not path:
+		return null
+	return path[0]
+
+func update_target(delta):
+	if not path:
+		return
+	var residual = speed * delta
+	while residual > 0 and path.size() > 1:
+		var dist = path[0].distance_to(path[1])
+		if residual <= dist:
+			path[0] += (path[1] - path[0]).normalized() * residual
+			residual = 0
+		else:
+			residual -= dist
+			path.remove(0)
+
+func get_target_position():
+	return get_node(target_node).global_transform.origin
+
+func set_target_node(new_target_node):
+	target_node = new_target_node
+	if target_node:
+		path = get_nav(get_target_position())
 
 func get_nav(target):
 	var nav = $"../Navigation"
