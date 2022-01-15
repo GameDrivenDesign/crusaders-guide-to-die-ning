@@ -6,13 +6,30 @@ var speed = 1
 export var health = 10.0
 
 func damage(amount):
-	health -= amount
-	if health <= 0:
-		queue_free()
+	if is_network_master():
+		health -= amount
+		if health <= 0:
+			rpc("_spawn_particles", global_transform)
+			$Sync.remove()
+
+remotesync func _spawn_particles(position):
+	var particles = preload("res://astronaut/DeathParticles.tscn").instance()
+	get_parent().add_child(particles)
+	particles.global_transform = position
+
+func _ready():
+	$AnimationPlayer.play("Walking")
+
+remotesync func spawn_food(pos):
+	var p = preload("res://models/food/food_explosion.tscn").instance()
+	p.scale = Vector3(0.3, 0.3, 0.3)
+	get_parent().add_child(p)
+	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
 func _physics_process(delta):
 	var target = get_node(targetNode).global_transform.origin
 	if target.distance_to(global_transform.origin) < 3:
+		rpc("spawn_food", global_transform.origin)
 		$Sync.remove()
 		return
 	
