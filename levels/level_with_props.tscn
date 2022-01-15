@@ -7,24 +7,25 @@
 [node name="level_with_props" type="Spatial"]
 
 [node name="level" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="gate_complex" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95643, 0.0140539, 14.6531 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80597, 0.0140539, 17.3193 )
 
 [node name="crystal" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 3.27217, 0, 14.0156 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 2.86028, 0, 15.2447 )
 
 [node name="crystal2" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 11.7818, -4.76837e-07, 22.4241 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 13.6942, -9.53674e-07, 21.0077 )
 
 [node name="crystal3" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 6.01764, 0, 26.9063 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 7.87876, 0, 29.6854 )
 
 [node name="crystal4" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 0.777245, 0, 22.5096 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, 1.0766, 4.76837e-07, 25.2277 )
 
 [node name="crystal5" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, -3.4666, 0, 20.9925 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, -3.81458, 0, 21.5274 )
 
 [node name="crystal6" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, -3.28932, 0, 19.1365 )
+transform = Transform( -0.301039, 0, -0.953612, 0, 1, 0, 0.953612, 0, -0.301039, -3.80145, -2.38419e-07, 19.4332 )

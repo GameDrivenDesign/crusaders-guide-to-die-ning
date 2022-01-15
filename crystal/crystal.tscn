@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://models/crystal.material" type="Material" id=1]
 [ext_resource path="res://models/rockTrack.material" type="Material" id=2]
@@ -43,6 +43,9 @@ surfaces/2 = {
 "vertex_count": 600
 }
 
+[sub_resource type="CylinderShape" id=2]
+radius = 0.989079
+
 [node name="crystal" type="Spatial"]
 
 [node name="rock_crystalsLargeA2" type="MeshInstance" parent="."]
@@ -52,3 +55,8 @@ skeleton = NodePath("")
 material/0 = null
 material/1 = null
 material/2 = null
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
