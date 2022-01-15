@@ -14,9 +14,17 @@ radius = 0.25
 transform = Transform( 0.860369, 0, 0, 0, 0.860369, 0, 0, 0, 0.860369, 0, 0, 0 )
 script = ExtResource( 2 )
 
-[node name="Navigation" type="Navigation" parent="."]
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 1.52501, 1.2989, 0.377049 )
 
-[node name="GridMap" type="GridMap" parent="Navigation"]
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 2 )
+
+[node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0 )
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 0.5, 1 )
@@ -25,15 +33,5 @@ data = {
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, -1, 0 )
 }
-
-[node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 6.0209, 1.2989, 1.52657 )
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 2 )
