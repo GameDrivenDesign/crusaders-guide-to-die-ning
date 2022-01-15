@@ -55,6 +55,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00522642, 0 )
 navmesh = SubResource( 1 )
 
 [node name="meshes" type="Spatial" parent="game/Navigation/NavigationMeshInstance"]
+visible = false
 
 [node name="mountains" type="CSGCombiner" parent="game/Navigation/NavigationMeshInstance/meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495821, 0 )
