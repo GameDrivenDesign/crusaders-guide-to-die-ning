@@ -25,6 +25,18 @@ transform = Transform( -0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0.
 current = true
 fov = 67.7
 
+[node name="hud" type="CanvasLayer" parent="game/Camera"]
+
+[node name="Button" type="Button" parent="game/Camera/hud"]
+margin_left = 845.0
+margin_top = 33.0
+margin_right = 984.0
+margin_bottom = 53.0
+text = "PLACE STARS HERE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="base_target" type="Spatial" parent="game"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95275, -4.76837e-07, 24.8316 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://models/skin.material" type="Material" id=1]
 [ext_resource path="res://models/rockDark.material" type="Material" id=2]
@@ -10,6 +10,23 @@
 [ext_resource path="res://models/crystal.material" type="Material" id=8]
 [ext_resource path="res://models/rockTrack.material" type="Material" id=9]
 [ext_resource path="res://new_meshlibrary.tres" type="MeshLibrary" id=10]
+[ext_resource path="res://fonts/FugazOne-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://models/ship_light.gltf" type="PackedScene" id=12]
+[ext_resource path="res://models/food/apple.glb" type="PackedScene" id=13]
+[ext_resource path="res://models/food/cake.glb" type="PackedScene" id=14]
+[ext_resource path="res://models/food/cookie.glb" type="PackedScene" id=15]
+[ext_resource path="res://models/food/burgerDouble.glb" type="PackedScene" id=16]
+[ext_resource path="res://models/craterLarge.glb" type="PackedScene" id=17]
+[ext_resource path="res://models/crater.glb" type="PackedScene" id=18]
+[ext_resource path="res://models/meteor_detailed.glb" type="PackedScene" id=19]
+
+[sub_resource type="DynamicFont" id=19]
+size = 64
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 24
+font_data = ExtResource( 11 )
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "astronautA_Mesh armLeft"
@@ -701,10 +718,46 @@ surfaces/2 = {
 "vertex_count": 54
 }
 
+[sub_resource type="ProceduralSky" id=21]
+sky_top_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+sky_horizon_color = Color( 0.298039, 0.298039, 0.298039, 1 )
+
+[sub_resource type="Environment" id=20]
+background_mode = 2
+background_sky = SubResource( 21 )
+background_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
 [node name="menu" type="Spatial"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 71.0
+margin_top = 94.0
+margin_right = 962.0
+margin_bottom = 287.0
+custom_fonts/font = SubResource( 19 )
+text = "Crusaders' Guide to
+Die-ning"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loading" type="Label" parent="CanvasLayer"]
+margin_left = 62.0
+margin_top = 374.0
+margin_right = 953.0
+margin_bottom = 567.0
+custom_fonts/font = SubResource( 22 )
+text = "Loading ..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="astronautA" type="Spatial" parent="."]
-transform = Transform( 0.735376, 0, 0.677659, 0, 1, 0, -0.677659, 0, 0.735376, 1.08938, 0, 1.04772 )
+transform = Transform( 0.735376, 0, 0.677659, 0, 1, 0, -0.677659, 0, 0.735376, 1.48238, 0, 1.18986 )
 
 [node name="armLeft" type="MeshInstance" parent="astronautA"]
 transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
@@ -749,7 +802,7 @@ material/1 = null
 material/2 = null
 
 [node name="alien" type="Spatial" parent="."]
-transform = Transform( 0.704312, 0, -0.70989, 0, 1, 0, 0.70989, 0, 0.704312, -2.08995, 0, 0.0992992 )
+transform = Transform( 0.704312, 0, -0.70989, 0, 1, 0, 0.70989, 0, 0.704312, -1.50153, 0, 0.463648 )
 
 [node name="armLeft" type="MeshInstance" parent="alien"]
 transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
@@ -794,7 +847,7 @@ material/1 = null
 material/2 = null
 
 [node name="astronautB2" type="Spatial" parent="."]
-transform = Transform( 0.822879, 0, 0.568217, 0, 1, 0, -0.568217, 0, 0.822879, 1.15831, 0, -0.0597548 )
+transform = Transform( 0.822879, 0, 0.568217, 0, 1, 0, -0.568217, 0, 0.822879, 1.80946, 0, -0.00178571 )
 
 [node name="armLeft" type="MeshInstance" parent="astronautB2"]
 transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
@@ -847,9 +900,11 @@ material/2 = null
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.0173e-07, 1.03442, -2.66054 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.764719, 0.644364, 0, -0.644364, -0.764719, -2.38419e-07, 2.49146, -3.03187 )
+transform = Transform( 0.303112, -0.914242, -0.268857, -0.333993, -0.366153, 0.868551, -0.892509, -0.173472, -0.416336, -2.38419e-07, 5.01673, -3.03187 )
+shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508273, 0 )
 mesh_library = ExtResource( 10 )
 cell_size = Vector3( 1, 1, 1 )
 data = {
@@ -859,3 +914,92 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, -1, 0 )
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 20 )
+
+[node name="ship_light" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.542075, 0, -0.84033, 0, 1, 0, 0.84033, 0, 0.542075, -7.22829, -0.608255, 8.95994 )
+
+[node name="astronautA2" type="Spatial" parent="ship_light"]
+transform = Transform( 0.829369, 0, 0.558701, 0, 1, 0, -0.558701, 0, 0.829369, -0.972322, 1.62797, -3.27058 )
+
+[node name="armLeft" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="armRight" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.473184, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="body" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223184, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="head" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.483184, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="legLeft" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.223184, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="legRight" type="MeshInstance" parent="ship_light/astronautA2"]
+transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, 0.13, 0.223184, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="food" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56006, 0.0103736, -0.022068 )
+
+[node name="apple" parent="food" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163548, 0, 0.107589 )
+
+[node name="apple2" parent="food" instance=ExtResource( 13 )]
+
+[node name="cookie2" parent="food" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454947, -0.00146383, -0.199276 )
+
+[node name="cookie" parent="food" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242641, -0.00146383, -0.0941063 )
+
+[node name="cookie3" parent="food" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.386463, 0.0591986, -0.135037 )
+
+[node name="cake" parent="food" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.562578, -0.00247645, 0.214775 )
+
+[node name="burgerDouble" parent="food" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.964502, -0.00234079, -0.229517 )
+
+[node name="craterLarge" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0267196, 0.0484909, 1.76434 )
+
+[node name="crater" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.03692, 0.0492804, 0.473273 )
+
+[node name="craterLarge2" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24136, 0.0511072, 3.58088 )
+
+[node name="crater2" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.754205, 0.0485489, -1.41821 )
+
+[node name="meteor_detailed" parent="." instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
