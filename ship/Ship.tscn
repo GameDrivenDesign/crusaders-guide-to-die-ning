@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/ship_light.gltf" type="PackedScene" id=1]
+[ext_resource path="res://ship/Ship.gd" type="Script" id=2]
+[ext_resource path="res://addons/multiplayer/Sync.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.426727
+height = 1.51144
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("model:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 5.782, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Sailing"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("model:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.782, 0, 0 ), Vector3( -5.782, 0, 0 ) ]
+}
+
+[node name="Ship" type="KinematicBody" groups=["enemy"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204806, -0.0018947, 0.00224544 )
+script = ExtResource( 2 )
+health = 5.0
+
+[node name="model" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.3, 0, 0, 0, 0.298474, -0.0302231, 0, 0.0302231, 0.298474, 0.218162, 0.0160038, 0.168958 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43697, -0.0299715 )
+shape = SubResource( 1 )
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Sailing"
+anims/RESET = SubResource( 2 )
+anims/Sailing = SubResource( 3 )
