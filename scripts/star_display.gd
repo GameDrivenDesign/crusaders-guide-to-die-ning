@@ -13,15 +13,15 @@ func decrement_star_count():
 	if not is_network_master():
 		return
 	
-	current_star_count -= 1
-	
-	if current_star_count <= 0:
-		if enable_gameover:
-			assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
-		return
-	
-	set_star_count(current_star_count)
+	set_star_count(current_star_count - 1)
 
 func set_star_count(num):
 	current_star_count = num
-	self.rect_size.x = num * texture_size
+	if current_star_count <= 0:
+		if enable_gameover:
+			rpc("change_to_gameover")
+	else:
+		self.rect_size.x = num * texture_size
+
+remotesync func change_to_gameover():
+	assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
