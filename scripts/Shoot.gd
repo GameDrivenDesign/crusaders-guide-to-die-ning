@@ -2,7 +2,6 @@ extends Spatial
 
 var current_target: Spatial = null setget set_current_target
 var cooldown = 0.2
-var speed = 10.0
 
 var time_until_next_shot = cooldown
 
@@ -46,15 +45,13 @@ func turn_to_target():
 	look_at(direction, Vector3.UP)
 
 func shoot():
-	var direction = get_direction_to_target()
-	var velocity = direction.normalized() * speed
-	spawn_projectile(velocity)
+	spawn_projectile(current_target)
 	time_until_next_shot = cooldown
 
-func spawn_projectile(velocity: Vector3):
+func spawn_projectile(target: Spatial):
 	var projectile = preload("res://scenes/Projectile.tscn").instance()
 	get_tower().get_parent().add_child(projectile)
-	projectile.velocity = velocity
+	projectile.target = target
 	projectile.global_transform.origin = global_transform.origin
 	get_tower().shot_fired()
 
