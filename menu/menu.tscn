@@ -732,10 +732,10 @@ background_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 71.0
-margin_top = 94.0
-margin_right = 962.0
-margin_bottom = 287.0
+margin_left = 62.0
+margin_top = 36.0
+margin_right = 953.0
+margin_bottom = 229.0
 custom_fonts/font = SubResource( 19 )
 text = "Crusaders' Guide to
 Die-ning"
@@ -901,6 +901,7 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.0173
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.303112, -0.914242, -0.268857, -0.333993, -0.366153, 0.868551, -0.892509, -0.173472, -0.416336, -2.38419e-07, 5.01673, -3.03187 )
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="GridMap" type="GridMap" parent="."]
