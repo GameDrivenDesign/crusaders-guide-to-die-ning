@@ -33,7 +33,7 @@ func choose_target(targets):
 	return null
 
 func try_shoot():
-	if current_target:
+	if current_target and get_tower().can_shoot():
 		shoot()
 
 func set_current_target(new_target):
@@ -56,6 +56,7 @@ func spawn_projectile(velocity: Vector3):
 	get_tower().get_parent().add_child(projectile)
 	projectile.velocity = velocity
 	projectile.global_transform.origin = global_transform.origin
+	get_tower().shot_fired()
 
 func get_direction_to_target():
 	return current_target.global_transform.origin - global_transform.origin
