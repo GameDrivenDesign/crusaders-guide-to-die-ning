@@ -59,8 +59,8 @@ func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 		set_crystals(3)
+		$name/name_view/label.text = Global.player_name
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
 
