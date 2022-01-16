@@ -74,7 +74,7 @@ __meta__ = {
 }
 
 [node name="base_target" type="Spatial" parent="game"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9281, -4.76837e-07, 24.4865 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0657, -4.76837e-07, 20.8386 )
 
 [node name="Navigation" type="Navigation" parent="game"]
 
