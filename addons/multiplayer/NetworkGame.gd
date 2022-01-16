@@ -20,7 +20,10 @@ func _ready():
 		push_error("Player Scene not set in NetworkGame")
 	name = "NetworkGame"
 	if auto_connect:
-		connect_via_cli()
+		if get_tree().has_network_peer():
+			server_init_world("--dedicated" in OS.get_cmdline_args())
+		else:
+			connect_via_cli()
 
 #func _process(delta):
 #	if get_tree().network_peer:
