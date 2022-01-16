@@ -6,7 +6,8 @@ func _ready():
 	if "--dedicated" in OS.get_cmdline_args():
 		assert(get_tree().change_scene_to(load("res://game/game.tscn")) == OK)
 		return
-	$menu/container/name.grab_focus()
+	if not is_game_over_screen:
+		$menu/container/name.grab_focus()
 
 func _on_start_pressed():
 	start()
