@@ -15,8 +15,4 @@ func start():
 	$menu/container/name.editable = false
 	if $menu/container/name.text.length() > 0:
 		Global.player_name = $menu/container/name.text
-	get_tree().change_scene_to(load("res://game/game.tscn"))
-
-
-func _on_menu_pressed(): # exit to menu
-	get_tree().change_scene_to(load("res://menu/menu.tscn"))
+	get_tree().change_scene_to(preload("res://game/game.tscn"))
