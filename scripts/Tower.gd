@@ -13,7 +13,7 @@ func set_active(b):
 	$fuel_indicator.visible = b
 
 func _ready():
-	set_fuel(10)
+	set_fuel(100)
 
 func set_target_radius(radius):
 	$TargetRange/CollisionShape.shape.radius = radius
