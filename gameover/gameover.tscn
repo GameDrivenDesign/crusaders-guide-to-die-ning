@@ -754,10 +754,20 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="menu/container"]
 margin_right = 620.0
-margin_bottom = 193.0
+margin_bottom = 95.0
 custom_fonts/font = SubResource( 19 )
-text = "Crusaders' Guide to
-Die-ning"
+text = "Game Over!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="menu/container"]
+margin_top = 99.0
+margin_right = 620.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 19 )
+text = "Score: "
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -784,9 +794,9 @@ __meta__ = {
 }
 
 [node name="menu" type="Button" parent="menu/container"]
-margin_top = 197.0
+margin_top = 198.0
 margin_right = 620.0
-margin_bottom = 237.0
+margin_bottom = 238.0
 custom_fonts/font = SubResource( 23 )
 text = "Back to the Main Menu!"
 __meta__ = {
@@ -794,9 +804,9 @@ __meta__ = {
 }
 
 [node name="restart" type="Button" parent="menu/container"]
-margin_top = 241.0
+margin_top = 242.0
 margin_right = 620.0
-margin_bottom = 281.0
+margin_bottom = 282.0
 custom_fonts/font = SubResource( 23 )
 text = "Restart the Operation!"
 __meta__ = {
@@ -804,17 +814,17 @@ __meta__ = {
 }
 
 [node name="astronautA" type="Spatial" parent="."]
-transform = Transform( 0.735376, 0, 0.677659, 0, 1, 0, -0.677659, 0, 0.735376, 1.48238, 0, 1.18986 )
+transform = Transform( 0.735376, 0, 0.677659, 0, 1, 0, -0.677659, 0, 0.735376, -1.81253, 0, 0.487325 )
 
 [node name="armLeft" type="MeshInstance" parent="astronautA"]
-transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
+transform = Transform( 0.822507, -0.242521, 0.0389506, 0.242521, 0.780239, -0.263177, 0.0389505, 0.263177, 0.816132, -0.13, 0.473184, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="armRight" type="MeshInstance" parent="astronautA"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.473184, 0 )
+transform = Transform( 0.883076, 0.406395, 0.234562, -0.253046, 0.833423, -0.491298, -0.395151, 0.374499, 0.838813, 0.13, 0.473184, -2.38419e-07 )
 mesh = SubResource( 2 )
 material/0 = null
 material/1 = null
@@ -828,7 +838,7 @@ material/1 = null
 material/2 = null
 
 [node name="head" type="MeshInstance" parent="astronautA"]
-transform = Transform( 0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.483184, 0 )
+transform = Transform( 0.259835, 0.00146752, -0.00915352, 0.00200561, 0.241743, 0.0956889, 0.00905085, -0.0956988, 0.241578, 0, 0.483184, 0 )
 mesh = SubResource( 4 )
 material/0 = null
 material/1 = null
@@ -849,17 +859,17 @@ material/1 = null
 material/2 = null
 
 [node name="alien" type="Spatial" parent="."]
-transform = Transform( 0.704312, 0, -0.70989, 0, 1, 0, 0.70989, 0, 0.704312, -1.50153, 0, 0.463648 )
+transform = Transform( 0.72843, 0.684806, 0.0207304, -0.0996065, 0.135791, -0.985717, -0.67784, 0.715962, 0.167126, 1.53015, 0, 1.09596 )
 
 [node name="armLeft" type="MeshInstance" parent="alien"]
-transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
+transform = Transform( 0.450524, 0.730531, 0.014265, -0.660527, 0.400032, 0.374872, 0.312382, -0.207725, 0.772087, -0.130001, 0.473184, 2.98023e-08 )
 mesh = SubResource( 7 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="armRight" type="MeshInstance" parent="alien"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.473184, 0 )
+transform = Transform( 0.563675, -0.82355, 0.0635315, 0.825136, 0.557911, -0.0887962, 0.0376831, 0.102475, 0.994021, 0.129999, 0.473184, -1.49012e-07 )
 mesh = SubResource( 8 )
 material/0 = null
 material/1 = null
@@ -894,10 +904,10 @@ material/1 = null
 material/2 = null
 
 [node name="astronautB2" type="Spatial" parent="."]
-transform = Transform( 0.822879, 0, 0.568217, 0, 1, 0, -0.568217, 0, 0.822879, 1.80946, 0, -0.00178571 )
+transform = Transform( 0.0380394, 0, 0.999276, 0, 1, 0, -0.999276, 0, 0.0380394, -1.05034, 0, -0.00178571 )
 
 [node name="armLeft" type="MeshInstance" parent="astronautB2"]
-transform = Transform( 0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0 )
+transform = Transform( 0.85825, 0.0155501, -0.00393756, -0.0155501, 0.754812, -0.408494, -0.00393756, 0.408494, 0.754962, -0.131578, 0.463951, -0.0414479 )
 mesh = SubResource( 13 )
 skeleton = NodePath("../../astronautB2")
 material/0 = null
@@ -905,7 +915,7 @@ material/1 = null
 material/2 = null
 
 [node name="armRight" type="MeshInstance" parent="astronautB2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.473184, 0 )
+transform = Transform( 0.999442, 0.0300134, -0.0146581, -0.0300134, 0.614382, -0.788438, -0.0146581, 0.788438, 0.61494, 0.128399, 0.467395, -0.0420665 )
 mesh = SubResource( 14 )
 skeleton = NodePath("../../astronautB2")
 material/0 = null
@@ -913,7 +923,7 @@ material/1 = null
 material/2 = null
 
 [node name="body" type="MeshInstance" parent="astronautB2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223184, 0 )
+transform = Transform( 0.999909, -0.0132464, -0.00237918, 0.0132464, 0.93741, 0.347977, -0.00237918, -0.347976, 0.9375, 0.00172203, 0.231321, 0.0452369 )
 mesh = SubResource( 15 )
 skeleton = NodePath("../../astronautB2")
 material/0 = null
@@ -921,7 +931,7 @@ material/1 = null
 material/2 = null
 
 [node name="head" type="MeshInstance" parent="astronautB2"]
-transform = Transform( 0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.483184, 0 )
+transform = Transform( 0.259976, -0.00344406, -0.000618586, 0.00344407, 0.243727, 0.0904739, -0.000618584, -0.0904738, 0.24375, -0.00172203, 0.475047, -0.0452369 )
 mesh = SubResource( 16 )
 skeleton = NodePath("../../astronautB2")
 material/0 = null
@@ -1021,6 +1031,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56006, 0.0103736, -0.022068
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163548, 0, 0.107589 )
 
 [node name="apple2" parent="food" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.236505, 0.208587, 0 )
 
 [node name="cookie2" parent="food" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454947, -0.00146383, -0.199276 )
@@ -1053,7 +1064,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.754205, 0.0485489, -1.41821 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
 
 [node name="title" parent="." instance=ExtResource( 20 )]
-transform = Transform( -0.797573, 0, 0.603222, 0, 1, 0, -0.603222, 0, -0.797573, -7.81815, -0.00120449, 6.36764 )
+transform = Transform( 0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -7.81815, -0.00120449, 6.36764 )
 
 [connection signal="text_entered" from="menu/container/name" to="." method="_on_name_text_entered"]
 [connection signal="pressed" from="menu/container/menu" to="." method="_on_menu_pressed"]
