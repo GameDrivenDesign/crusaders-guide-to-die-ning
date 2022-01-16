@@ -4,7 +4,7 @@ export(NodePath) var target_node setget set_target_node
 
 export var speed = 0.5
 export var health = 50.0
-export var astronautNumber = 10
+export var astronautNumber = 5
 
 var path
 
