@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://models/rocket_topA.glb" type="PackedScene" id=1]
 [ext_resource path="res://models/rocket_sidesA.glb" type="PackedScene" id=2]
@@ -18,14 +18,15 @@
 [ext_resource path="res://models/platform_side.glb" type="PackedScene" id=16]
 [ext_resource path="res://models/corridor_end.glb" type="PackedScene" id=17]
 [ext_resource path="res://models/chimney.glb" type="PackedScene" id=18]
+[ext_resource path="res://addons/multiplayer/Sync.gd" type="Script" id=19]
 [ext_resource path="res://models/monorail_trackCornerSmall.glb" type="PackedScene" id=20]
+[ext_resource path="res://scenes/TowerPreview.tscn" type="PackedScene" id=21]
 [ext_resource path="res://models/pipe_corner.glb" type="PackedScene" id=22]
 [ext_resource path="res://models/pipe_straight.glb" type="PackedScene" id=23]
 [ext_resource path="res://models/pipe_rampLarge.glb" type="PackedScene" id=25]
 [ext_resource path="res://models/pipe_ringSupport.glb" type="PackedScene" id=26]
 [ext_resource path="res://models/pipe_entrance.glb" type="PackedScene" id=29]
 [ext_resource path="res://scenes/Restaurant.gd" type="Script" id=30]
-[ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=31]
 [ext_resource path="res://restaurant/title.glb" type="PackedScene" id=32]
 [ext_resource path="res://models/food/apple.glb" type="PackedScene" id=33]
 [ext_resource path="res://models/food/cake.glb" type="PackedScene" id=34]
@@ -436,8 +437,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.20056 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24212, 1, 0.864177 )
 shape = SubResource( 1 )
 
-[node name="Tower" parent="tower_collect" instance=ExtResource( 31 )]
-transform = Transform( -0.6, 0, 5.24537e-08, 0, 0.6, 0, -5.24537e-08, 0, -0.6, 1.60035, 1.17694, -0.544993 )
+[node name="Tower" parent="tower_collect" instance=ExtResource( 21 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.60035, 1.17694, -0.544993 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="tower_collect/Tower"]
 playback_speed = 0.3
@@ -582,6 +583,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.596, 0, -1.675 )
 
 [node name="CollisionShape" type="CollisionShape" parent="FoodArea"]
 shape = SubResource( 14 )
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource( 19 )
+synced = PoolStringArray( "stored_towers" )
 
 [connection signal="body_entered" from="emerald_dropoff/Area" to="." method="_on_dropoff_entered"]
 [connection signal="ready" from="emerald_dropoff/MeshInstance/AnimationPlayer" to="emerald_dropoff/MeshInstance/AnimationPlayer" method="play" binds= [ "hover" ]]

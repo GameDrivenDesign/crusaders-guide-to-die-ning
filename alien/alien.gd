@@ -27,8 +27,7 @@ func set_carrying_tower(b):
 	if carrying_tower == b:
 		return
 	if b:
-		var tower = preload("res://scenes/Tower.tscn").instance()
-		tower.active = false
+		var tower = preload("res://scenes/TowerPreview.tscn").instance()
 		# FIXME: does not belong here but there were weird bugs
 		if is_network_master():
 			$model/tower_carry_position.add_child(tower)
@@ -143,7 +142,6 @@ func spawn_tower():
 	set_carrying_tower(false)
 	var offset = 1
 	var tower_node = preload("res://scenes/Tower.tscn").instance()
-	tower_node.active = true
 	tower_node.set_network_master(get_network_master())
 	get_parent().add_child(tower_node)
 	tower_node.global_transform.origin = global_transform.origin + direction * offset

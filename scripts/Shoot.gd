@@ -6,8 +6,6 @@ var cooldown = 0.2
 var time_until_next_shot = cooldown
 
 func _physics_process(delta):
-	if not is_active():
-		return
 	time_until_next_shot -= delta
 	update_target()
 	if time_until_next_shot <= 0:
@@ -16,9 +14,6 @@ func _physics_process(delta):
 
 func get_tower():
 	return get_parent()
-
-func is_active():
-	return get_tower().active
 
 func update_target():
 	var targets = get_tower().get_targets()
