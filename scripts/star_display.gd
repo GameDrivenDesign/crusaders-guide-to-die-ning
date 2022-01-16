@@ -9,7 +9,7 @@ export var enable_gameover = true
 func _ready():
 	pass # Replace with function body.
 
-master func decrement_star_count():
+remote func decrement_star_count():
 	if not is_network_master():
 		return
 	

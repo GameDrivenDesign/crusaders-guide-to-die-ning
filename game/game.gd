@@ -11,7 +11,7 @@ func spawn_enemy(probability): # lower = more often ships
 	var position = positions[int(rand_range(0, positions.size()))]
 	
 	var enemy
-	if int(rand_range(0, probability)) == 0:
+	if false and int(rand_range(0, probability)) == 0:
 		enemy = preload("res://ship/Ship.tscn").instance()
 	else:
 		enemy = preload("res://astronaut/astronaut.tscn").instance()
