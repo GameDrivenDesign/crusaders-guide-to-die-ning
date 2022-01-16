@@ -26,7 +26,9 @@ func set_carrying_tower(b):
 	if b:
 		var tower = preload("res://scenes/Tower.tscn").instance()
 		tower.active = false
-		$model/tower_carry_position.add_child(tower)
+		# FIXME: does not belong here but there were weird bugs
+		if is_network_master():
+			$model/tower_carry_position.add_child(tower)
 	else:
 		for c in $model/tower_carry_position.get_children():
 			c.queue_free()

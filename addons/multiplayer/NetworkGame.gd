@@ -20,14 +20,19 @@ func _ready():
 		push_error("Player Scene not set in NetworkGame")
 	name = "NetworkGame"
 	if auto_connect:
-		if get_tree().has_network_peer():
-			server_init_world("--dedicated" in OS.get_cmdline_args())
-		else:
-			connect_via_cli()
+		disconnect_all()
+		connect_via_cli()
 
-#func _process(delta):
-#	if get_tree().network_peer:
-#		get_tree().network_peer.poll()
+func disconnect_all():
+	if get_tree().has_network_peer():
+		var peer = get_tree().network_peer
+		if peer is NetworkedMultiplayerENet:
+			peer.close_connection()
+		elif peer is WebSocketClient:
+			peer.disconnect_from_host()
+		elif peer is WebSocketServer:
+			peer.stop()
+		get_tree().network_peer = null
 
 func connect_via_cli():
 	if OS.has_feature("editor"):

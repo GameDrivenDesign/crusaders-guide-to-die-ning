@@ -1,6 +1,6 @@
 extends TextureRect
 
-var current_star_count = 10
+var current_star_count = 10 setget set_star_count
 export var texture_size = 1200 
 
 export var enable_gameover = true
@@ -17,4 +17,8 @@ func decrement_star_count():
 			assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
 		return
 	
-	self.rect_size.x -= texture_size
+	set_star_count(current_star_count)
+
+func set_star_count(num):
+	current_star_count = num
+	self.rect_size.x = num * texture_size
