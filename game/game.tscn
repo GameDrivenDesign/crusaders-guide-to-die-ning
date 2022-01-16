@@ -82,7 +82,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0657, -4.76837e-07, 20.8386 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0212345, 0, -0.0217981 )
 
 [node name="SpawnPoint" type="Spatial" parent="game"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.6398 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79659, 0, 26.2983 )
 
 [node name="EnemySpawnPoints" type="Spatial" parent="game"]
 

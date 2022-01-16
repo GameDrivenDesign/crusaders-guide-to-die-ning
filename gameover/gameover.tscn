@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://models/skin.material" type="Material" id=1]
 [ext_resource path="res://models/rockDark.material" type="Material" id=2]
@@ -24,10 +24,6 @@
 
 [sub_resource type="DynamicFont" id=19]
 size = 64
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=24]
-size = 32
 font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=22]
@@ -764,14 +760,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="LineEdit" parent="menu/container"]
-visible = false
-margin_top = 197.0
-margin_right = 620.0
-margin_bottom = 255.0
-custom_fonts/font = SubResource( 24 )
-placeholder_text = "Enter your name ..."
-
 [node name="loading" type="Label" parent="menu/container"]
 visible = false
 margin_top = 259.0
@@ -1046,5 +1034,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
 [node name="title" parent="." instance=ExtResource( 20 )]
 transform = Transform( -0.797573, 0, 0.603222, 0, 1, 0, -0.603222, 0, -0.797573, -7.81815, -0.00120449, 6.36764 )
 
-[connection signal="text_entered" from="menu/container/name" to="." method="_on_name_text_entered"]
 [connection signal="pressed" from="menu/container/restart" to="." method="_on_start_pressed"]
