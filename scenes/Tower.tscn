@@ -90,7 +90,6 @@ synced = PoolStringArray( "transform", "active", "fuel" )
 
 [node name="fuel_indicator" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435985, -2.38419e-07, -0.334602 )
-visible = false
 
 [node name="refuel" type="Area" parent="."]
 
