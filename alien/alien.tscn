@@ -956,3 +956,14 @@ initial = PoolStringArray( "color" )
 synced = PoolStringArray( "status", "player_name", "carrying_tower", "crystals" )
 unreliable_synced = PoolStringArray( "transform" )
 process_only_network_master = true
+
+[node name="sprintTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="sprintCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="sprintTimer" to="." method="_on_sprintTimer_timeout"]
+[connection signal="timeout" from="sprintCooldown" to="." method="_on_sprintCooldown_timeout"]
