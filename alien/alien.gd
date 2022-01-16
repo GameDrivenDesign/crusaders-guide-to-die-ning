@@ -28,7 +28,8 @@ func set_carrying_tower(b):
 		tower.active = false
 		$model/tower_carry_position.add_child(tower)
 	else:
-		$model/tower_carry_position.get_child(0).queue_free()
+		for c in $model/tower_carry_position.get_children():
+			c.queue_free()
 	carrying_tower = b
 
 func set_crystals(num: int):
