@@ -15,6 +15,9 @@ var carrying_tower = false setget set_carrying_tower
 var player_name = "" setget set_player_name
 
 var velocity = Vector3(0, 0, 0)
+var sprinting = false
+var can_sprint = true
+export var sprinting_speed = 5
 
 func set_player_name(n):
 	player_name = n
@@ -82,22 +85,31 @@ func _physics_process(delta):
 		new_status = "IdleCarrying"
 	var moving = false
 	var new_direction = Vector3(0,0,0)
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and not sprinting:
 		moving = true
 		new_direction += Vector3(1,0,1)
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and not sprinting:
 		moving = true
 		new_direction += Vector3(-1,0,-1)
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and not sprinting:
 		moving = true
 		new_direction += Vector3(1,0,-1)
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") and not sprinting:
 		moving = true
 		new_direction += Vector3(-1,0,1)
+	if Input.is_action_pressed("sprint") and can_sprint:
+		sprinting = true
+		can_sprint = false
+		_spawn_particles(global_transform)
+		$sprintTimer.start()
+	if sprinting:
+		moving = true
 	if moving == true:
-		direction = new_direction.normalized()
+		if not sprinting:
+			direction = new_direction.normalized()
 		velocity = Vector3(direction.x, -0.5, direction.z)
-		velocity = move_and_slide(velocity * speed)
+		var cur_speed = sprinting_speed if sprinting else speed
+		velocity = move_and_slide(velocity * cur_speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		if not is_carrying():
 			new_status = "Walking"
@@ -142,3 +154,21 @@ func stop_collecting():
 
 func get_crystal():
 	set_crystals(crystals + 1)
+
+
+func _on_sprintTimer_timeout():
+	sprinting = false
+	can_sprint = false
+	$sprintCooldown.start()
+
+
+func _on_sprintCooldown_timeout():
+	can_sprint = true
+
+
+remotesync func _spawn_particles(position):
+	var particles = preload("res://alien/SprintParticle.tscn").instance()
+	add_child(particles)
+	#get_parent().add_child(particles)
+	#particles.global_transform = position
+	#particles.look_at(direction + particles.global_transform.origin, Vector3.UP)
