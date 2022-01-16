@@ -14,9 +14,11 @@ var carrying_tower = false setget set_carrying_tower
 
 var player_name = "" setget set_player_name
 
+var velocity = Vector3(0, 0, 0)
+
 func set_player_name(n):
 	player_name = n
-	$name/name_view/label.text = n
+	$name_view/label.text = n
 
 func set_carrying_tower(b):
 	if carrying_tower == b:
@@ -26,7 +28,8 @@ func set_carrying_tower(b):
 		tower.active = false
 		$model/tower_carry_position.add_child(tower)
 	else:
-		$model/tower_carry_position.get_child(0).queue_free()
+		for c in $model/tower_carry_position.get_children():
+			c.queue_free()
 	carrying_tower = b
 
 func set_crystals(num: int):
@@ -65,10 +68,10 @@ func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 		set_crystals(3)
-		player_name = Global.player_name
 	
-	yield(get_tree().create_timer(1), "timeout")
-	set_player_name(Global.player_name)
+	yield(get_tree(), "idle_frame")
+	if is_network_master():
+		set_player_name(Global.player_name)
 
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
@@ -93,7 +96,8 @@ func _physics_process(delta):
 		new_direction += Vector3(-1,0,1)
 	if moving == true:
 		direction = new_direction.normalized()
-		move_and_slide(Vector3(direction.x, -0.5, direction.z) * speed)
+		velocity = Vector3(direction.x, -0.5, direction.z)
+		velocity = move_and_slide(velocity * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		if not is_carrying():
 			new_status = "Walking"

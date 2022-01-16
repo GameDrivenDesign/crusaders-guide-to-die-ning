@@ -23,7 +23,7 @@ func die():
 		$Sync.remove()
 
 remotesync func _spawn_astronauts(position):
-	for i in range(astronautNumber):
+	for _i in range(astronautNumber):
 		var astronaut = preload("res://astronaut/astronaut.tscn").instance()
 		astronaut.global_transform = position
 		astronaut.translation += Vector3(rand_range(-2, 2), 0, rand_range(-2, 2))
@@ -51,7 +51,7 @@ remotesync func spawn_food(pos):
 func _physics_process(delta):
 	if not target_node:
 		return
-	
+
 	var current_target = get_current_target()
 	if current_target:
 		current_target += NAV_OFFSET
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		var diff = current_target - my_pos
 		if diff.cross(Vector3.UP) != Vector3(): # check for alignment
 			look_at(current_target, Vector3.UP)
-		move_and_slide(diff, Vector3.UP)
+		var _vel = move_and_slide(diff, Vector3.UP)
 	update_target(delta)
 
 func get_current_target():
@@ -92,26 +92,5 @@ func get_nav(target):
 	var nav = $"../Navigation"
 	var start = nav.get_closest_point(global_transform.origin)
 	var end = nav.get_closest_point(target)
-	var path = nav.get_simple_path(start, end, true)
-	# show_path(path)
-	return path
-
-# helper
-var current_path
-func show_path(p):
-	if current_path:
-		current_path.queue_free()
-	
-	var path = Array(p)
-	path.invert()
-	
-	var im = ImmediateGeometry.new()
-	add_child(im)
-	
-	im.clear()
-	im.set_material_override(SpatialMaterial.new())
-	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	for x in p:
-		im.add_vertex(x + Vector3(0, 0.1, 0))
-	im.end()
-	current_path = im
+	var p = nav.get_simple_path(start, end, true)
+	return p
