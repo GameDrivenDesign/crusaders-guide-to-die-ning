@@ -30,15 +30,14 @@ remotesync func spawn_food(pos):
 	get_parent().add_child(p)
 	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
-remotesync func decrement_star_count():
-	$"../Camera/hud/star_display".decrement_star_count()
+func decrement_star_count():
+	$"../Camera/hud/star_display".rpc("decrement_star_count")
 
 func die():
 	if is_network_master():
 		rpc("spawn_food", global_transform.origin)
-		rpc("decrement_star_count")
+		decrement_star_count()
 		$Sync.remove()
-		print("die")
 
 func _physics_process(delta):
 	if not target_node:

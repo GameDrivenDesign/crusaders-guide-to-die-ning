@@ -20,7 +20,6 @@ func _ready():
 		push_error("Player Scene not set in NetworkGame")
 	name = "NetworkGame"
 	if auto_connect:
-		disconnect_all()
 		connect_via_cli()
 
 func disconnect_all():
@@ -122,8 +121,8 @@ func server_client_disconnected(id: int):
 	emit_signal("player_left", player, self)
 
 func client_server_gone():
-	print("Server disconnected from player, exiting ...")
-	get_tree().quit()
+	print("Server disconnected from player")
+	# get_tree().quit()
 
 ##################
 # Helper Functions
