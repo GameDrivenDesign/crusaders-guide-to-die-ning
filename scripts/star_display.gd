@@ -11,7 +11,7 @@ func decrement_star_count():
 	current_star_count -= 1
 	
 	if current_star_count <= 0:
-		print("game over")
+		get_tree().change_scene_to(load("res://gameover/gameover.tscn"))
 		return
 	
 	self.rect_size.x -= texture_size
