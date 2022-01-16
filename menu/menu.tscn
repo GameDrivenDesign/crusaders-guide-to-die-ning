@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://models/skin.material" type="Material" id=1]
 [ext_resource path="res://models/rockDark.material" type="Material" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://models/craterLarge.glb" type="PackedScene" id=17]
 [ext_resource path="res://models/crater.glb" type="PackedScene" id=18]
 [ext_resource path="res://models/meteor_detailed.glb" type="PackedScene" id=19]
+[ext_resource path="res://restaurant/title.glb" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=19]
 size = 64
@@ -920,7 +921,7 @@ __meta__ = {
 environment = SubResource( 20 )
 
 [node name="ship_light" parent="." instance=ExtResource( 12 )]
-transform = Transform( 0.542075, 0, -0.84033, 0, 1, 0, 0.84033, 0, 0.542075, -7.22829, -0.608255, 8.95994 )
+transform = Transform( 0.578797, 0, 0.815471, 0, 1, 0, -0.815471, 0, 0.578797, 8.1467, -0.187559, 9.6782 )
 
 [node name="astronautA2" type="Spatial" parent="ship_light"]
 transform = Transform( 0.829369, 0, 0.558701, 0, 1, 0, -0.558701, 0, 0.829369, -0.972322, 1.62797, -3.27058 )
@@ -1004,3 +1005,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.754205, 0.0485489, -1.41821 
 
 [node name="meteor_detailed" parent="." instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
+
+[node name="title" parent="." instance=ExtResource( 20 )]
+transform = Transform( -0.797573, 0, 0.603222, 0, 1, 0, -0.603222, 0, -0.797573, -7.81815, -0.00120449, 6.36764 )
