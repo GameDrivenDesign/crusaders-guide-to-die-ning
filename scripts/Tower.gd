@@ -8,7 +8,7 @@ const FUEL_PER_CRYSTAL = 20
 func set_active(b):
 	active = b
 	
-	var s = 1 if active else 0.4
+	var s = 1.0 if active else 0.4
 	scale = Vector3(s, s, s)
 	$fuel_indicator.visible = b
 

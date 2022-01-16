@@ -86,18 +86,15 @@ func get_nav(target):
 	var nav = $"../Navigation"
 	var start = nav.get_closest_point(global_transform.origin)
 	var end = nav.get_closest_point(target)
-	var path = nav.get_simple_path(start, end, true)
+	var p = nav.get_simple_path(start, end, true)
 	# show_path(path)
-	return path
+	return p
 
 # helper
 var current_path
 func show_path(p):
 	if current_path:
 		current_path.queue_free()
-	
-	var path = Array(p)
-	path.invert()
 	
 	var im = ImmediateGeometry.new()
 	add_child(im)
