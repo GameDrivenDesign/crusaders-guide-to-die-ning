@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if not target_node:
 		return
 	var target = get_target_position()
-	if target.distance_to(global_transform.origin) < 3:
+	if target.distance_to(global_transform.origin) < 2:
 		rpc("spawn_food", global_transform.origin)
 		$Sync.remove()
 		return
