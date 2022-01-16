@@ -1,6 +1,6 @@
 extends TextureRect
 
-var current_star_count = 1 setget set_star_count
+var current_star_count = 10 setget set_star_count
 export var texture_size = 1200 
 
 export var enable_gameover = true
