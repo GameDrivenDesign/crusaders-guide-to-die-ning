@@ -25,4 +25,5 @@ func set_star_count(num):
 
 remotesync func change_to_gameover():
 	assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
+	print("DISCONNECT!")
 	get_node("/root/NetworkGame").disconnect_all()

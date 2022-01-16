@@ -31,7 +31,7 @@ remotesync func spawn_food(pos):
 	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
 func decrement_star_count():
-	$"../Camera/hud/star_display".rpc_id(1, "decrement_star_count")
+	$"../Camera/hud/star_display".decrement_star_count()
 
 func die():
 	if is_network_master():

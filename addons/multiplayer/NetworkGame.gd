@@ -122,6 +122,8 @@ func server_client_disconnected(id: int):
 
 func client_server_gone():
 	print("Server disconnected from player")
+	assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
+	disconnect_all()
 	# get_tree().quit()
 
 ##################

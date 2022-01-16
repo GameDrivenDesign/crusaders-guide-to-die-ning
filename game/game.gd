@@ -31,17 +31,17 @@ func _process(_delta):
 				spawn_enemy(1)
 		
 		elif delta > 120_000: # = 60 secs: start spawning more ships
-			if int(rand_range(0, 20)) == 0:
+			if int(rand_range(0, 100)) == 0:
 				spawn_enemy(10)
 		
 		elif delta > 60_000: # = 20 secs: start spawning some ships
-			if int(rand_range(0, 20)) == 0:
+			if int(rand_range(0, 100)) == 0:
 				spawn_enemy(50)
 		
 		elif delta > 20_000: # = 10 secs: start spawning more of astronauts
-			if int(rand_range(0, 20)) == 0:
+			if int(rand_range(0, 100)) == 0:
 				spawn_enemy(1000)
 		
 		elif delta > 1000: # = 1 sec: start some spawning astronauts
-			if int(rand_range(0, 20)) == 0:
+			if int(rand_range(0, 100)) == 0:
 				spawn_enemy(1000)
