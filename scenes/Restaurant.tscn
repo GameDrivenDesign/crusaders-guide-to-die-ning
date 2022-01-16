@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://models/rocket_topA.glb" type="PackedScene" id=1]
 [ext_resource path="res://models/rocket_sidesA.glb" type="PackedScene" id=2]
@@ -37,6 +37,28 @@
 [ext_resource path="res://models/food/sodaCan.glb" type="PackedScene" id=39]
 [ext_resource path="res://models/food/burgerDouble.glb" type="PackedScene" id=40]
 [ext_resource path="res://models/food/burgerCheese.glb" type="PackedScene" id=41]
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.5, 2.5, 0.5 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.5, 3.5, 0.5 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 1, 0.6, 1.504 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 1.04855, 0.6, 0.40481 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.507, 0.3, 0.638 )
+
+[sub_resource type="CylinderShape" id=13]
+radius = 3.3
+height = 3.0
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 3.624, 0.7, 0.36 )
 
 [sub_resource type="CylinderShape" id=6]
 radius = 1.32502
@@ -173,6 +195,9 @@ tracks/0/keys = {
 "values": [ Vector3( 11.0433, 1.13905, 0.891726 ), Vector3( 11.0433, 1.38736, 0.891726 ), Vector3( 11.0433, 1.13905, 0.891726 ) ]
 }
 
+[sub_resource type="CylinderShape" id=14]
+radius = 3.94819
+
 [node name="Restaurant" type="Spatial"]
 script = ExtResource( 30 )
 
@@ -192,6 +217,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
 [node name="satelliteDish_large" parent="Tower" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Tower"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Tower/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+shape = SubResource( 11 )
 
 [node name="Rocket" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7.63659 )
@@ -221,6 +253,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.186, 0 )
 
 [node name="sides3" parent="Rocket" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.186, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Rocket"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Rocket/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+shape = SubResource( 12 )
 
 [node name="Kitchen" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4.5 )
@@ -256,17 +295,52 @@ transform = Transform( 4.76995e-08, 0, -1, 0, 1, 0, 4, 0, 1.19249e-08, 2, 0, -6.
 
 [node name="hangar_largeB" parent="Kitchen" instance=ExtResource( 12 )]
 
+[node name="StaticBody" type="StaticBody" parent="Kitchen/hangar_largeB"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99605, 0, 1.51216 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Kitchen/hangar_largeB/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+shape = SubResource( 15 )
+
 [node name="hangar_largeB2" parent="Kitchen" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="Kitchen/hangar_largeB2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99605, 0, 1.51216 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Kitchen/hangar_largeB2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+shape = SubResource( 15 )
 
 [node name="corridor" parent="Kitchen" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1.5, 0, 1, 0, -1, 0, -6.55671e-08, 1.2, 0, 3.5 )
 
+[node name="StaticBody" type="StaticBody" parent="Kitchen/corridor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99605, 0, 1.51216 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Kitchen/corridor/StaticBody"]
+transform = Transform( 1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, -0.517376, 0.6, 0.0305519 )
+shape = SubResource( 16 )
+
 [node name="machine_generatorLarge" parent="Kitchen" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1 )
 
+[node name="StaticBody" type="StaticBody" parent="Kitchen/machine_generatorLarge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99605, 0, 1.51216 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Kitchen/machine_generatorLarge/StaticBody"]
+transform = Transform( 1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+shape = SubResource( 17 )
+
 [node name="machine_generatorLarge2" parent="Kitchen" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1 )
+
+[node name="StaticBody" type="StaticBody" parent="Kitchen/machine_generatorLarge2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99605, 0, 1.51216 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Kitchen/machine_generatorLarge2/StaticBody"]
+transform = Transform( 1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+shape = SubResource( 17 )
 
 [node name="machine_barrelLarge" parent="Kitchen" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.2 )
@@ -295,6 +369,13 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 0, 0 )
 [node name="corridor_end2" parent="Dining" instance=ExtResource( 17 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 13.0157, 0, 7.53834 )
 
+[node name="StaticBody" type="StaticBody" parent="Dining"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Dining/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 13 )
+
 [node name="Piping" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.981447, 0, -10.895 )
 
@@ -318,6 +399,13 @@ transform = Transform( -0.0455025, 0, -0.998964, 0, 1, 0, 0.998964, 0, -0.045502
 
 [node name="pipe_entrance2" parent="Piping" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.5853, -1.5, 6.32058 )
+
+[node name="StaticBody" type="StaticBody" parent="Piping"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3088, 0, 6.02395 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Piping/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0 )
+shape = SubResource( 18 )
 
 [node name="emerald_dropoff" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.042, 0.261801, -1.34632 )
@@ -492,8 +580,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34844, 4.76837e-07, -4.22248
 [node name="apple2" parent="food" instance=ExtResource( 33 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76974, 0, -0.968312 )
 
+[node name="FoodArea" type="Area" parent="." groups=["food"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.596, 0, -1.675 )
+
+[node name="CollisionShape" type="CollisionShape" parent="FoodArea"]
+shape = SubResource( 14 )
+
 [connection signal="body_entered" from="emerald_dropoff/Area" to="." method="_on_dropoff_entered"]
 [connection signal="ready" from="emerald_dropoff/MeshInstance/AnimationPlayer" to="emerald_dropoff/MeshInstance/AnimationPlayer" method="play" binds= [ "hover" ]]
 [connection signal="body_entered" from="tower_collect/Area" to="." method="_on_tower_collect_entered"]
 [connection signal="ready" from="tower_collect/Tower/AnimationPlayer" to="tower_collect/Tower/AnimationPlayer" method="play" binds= [ "hover" ]]
 [connection signal="ready" from="title/AnimationPlayer" to="title/AnimationPlayer" method="play" binds= [ "hover" ]]
+[connection signal="body_entered" from="FoodArea" to="." method="_on_FoodArea_body_entered"]

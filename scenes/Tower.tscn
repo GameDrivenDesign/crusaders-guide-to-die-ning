@@ -86,7 +86,7 @@ shape = SubResource( 3 )
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource( 6 )
-synced = PoolStringArray( "transform", "active" )
+synced = PoolStringArray( "transform", "active", "fuel" )
 
 [node name="fuel_indicator" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435985, -2.38419e-07, -0.334602 )

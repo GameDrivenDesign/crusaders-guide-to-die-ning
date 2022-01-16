@@ -8,14 +8,19 @@ export var astronautNumber = 5
 
 var path
 
+const NAV_OFFSET = Vector3(0, 0, 0)
 
 func damage(amount):
 	if is_network_master():
 		health -= amount
 		if health <= 0:
-			rpc("_spawn_particles", global_transform)
-			rpc("_spawn_astronauts", global_transform)
-			$Sync.remove()
+			die()
+
+func die():
+	if is_network_master():
+		rpc("_spawn_particles", global_transform)
+		rpc("_spawn_astronauts", global_transform)
+		$Sync.remove()
 
 remotesync func _spawn_astronauts(position):
 	for _i in range(astronautNumber):
@@ -46,18 +51,18 @@ remotesync func spawn_food(pos):
 func _physics_process(delta):
 	if not target_node:
 		return
-	var target = get_target_position()
-	if target.distance_to(global_transform.origin) < 2:
-		rpc("spawn_food", global_transform.origin)
-		$Sync.remove()
-		return
-	
+
 	var current_target = get_current_target()
 	if current_target:
+		current_target += NAV_OFFSET
 		var my_pos = global_transform.origin
-		if my_pos.distance_to(current_target) > 0.1:
-			look_at(current_target, Vector3(0, 1, 0))
-		var _vel = move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
+		var diff = current_target - my_pos
+		var look_at_target = current_target
+		look_at_target.y = my_pos.y
+		var look_at_target_diff = look_at_target - my_pos
+		if look_at_target_diff.cross(Vector3.UP) != Vector3(): # check for alignment
+			look_at(look_at_target, Vector3.UP)
+		var _vel = move_and_slide(diff, Vector3.UP)
 	update_target(delta)
 
 func get_current_target():

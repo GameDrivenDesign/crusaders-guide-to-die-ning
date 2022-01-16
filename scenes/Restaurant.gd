@@ -34,3 +34,8 @@ master func collect_tower():
 		$tower_spawn.get_child($tower_spawn.get_child_count() - 1).queue_free()
 		return true
 	return false
+
+
+func _on_FoodArea_body_entered(body):
+	if body.is_in_group("enemy"):
+		body.die()

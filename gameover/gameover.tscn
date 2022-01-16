@@ -739,6 +739,7 @@ background_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="menu" type="Spatial"]
 script = ExtResource( 21 )
+is_game_over_screen = true
 
 [node name="menu" type="CanvasLayer" parent="."]
 
@@ -793,22 +794,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="menu" type="Button" parent="menu/container"]
+[node name="restart" type="Button" parent="menu/container"]
 margin_top = 198.0
 margin_right = 620.0
 margin_bottom = 238.0
 custom_fonts/font = SubResource( 23 )
-text = "Back to the Main Menu!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="restart" type="Button" parent="menu/container"]
-margin_top = 242.0
-margin_right = 620.0
-margin_bottom = 282.0
-custom_fonts/font = SubResource( 23 )
-text = "Restart the Operation!"
+text = "Let's try that again."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1067,5 +1058,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
 transform = Transform( 0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, -7.81815, -0.00120449, 6.36764 )
 
 [connection signal="text_entered" from="menu/container/name" to="." method="_on_name_text_entered"]
-[connection signal="pressed" from="menu/container/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="menu/container/restart" to="." method="_on_start_pressed"]

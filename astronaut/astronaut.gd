@@ -33,17 +33,15 @@ remotesync func spawn_food(pos):
 remotesync func decrement_star_count():
 	$"../Camera/hud/star_display".decrement_star_count()
 
-func _physics_process(delta):
-	if not target_node:
-		return
-	var target = get_target_position()
-	
-	if target.distance_to(global_transform.origin) < 2: # restaurant reached!
+func die():
+	if is_network_master():
 		rpc("spawn_food", global_transform.origin)
-		
 		rpc("decrement_star_count")
 		$Sync.remove()
-		
+		print("die")
+
+func _physics_process(delta):
+	if not target_node:
 		return
 	
 	var current_target = get_current_target()
