@@ -13,7 +13,11 @@ func _process(delta):
 			var positions = $EnemySpawnPoints.get_children()
 			var position = positions[int(rand_range(0, positions.size()))]
 			
-			var enemy = preload("res://astronaut/astronaut.tscn").instance()
+			var enemy
+			if int(rand_range(0, 50)) == 0:
+				enemy = preload("res://ship/Ship.tscn").instance()
+			else:
+				enemy = preload("res://astronaut/astronaut.tscn").instance()
 			enemy.global_transform = position.global_transform
 			add_child(enemy)
 			enemy.target_node = $base_target.get_path()
