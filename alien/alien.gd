@@ -14,6 +14,8 @@ var carrying_tower = false setget set_carrying_tower
 
 var player_name = "" setget set_player_name
 
+var velocity = Vector3(0, 0, 0)
+
 func set_player_name(n):
 	player_name = n
 	$name/name_view/label.text = n
@@ -93,7 +95,8 @@ func _physics_process(delta):
 		new_direction += Vector3(-1,0,1)
 	if moving == true:
 		direction = new_direction.normalized()
-		move_and_slide(Vector3(direction.x, -0.5, direction.z) * speed)
+		velocity = Vector3(direction.x, -0.5, direction.z)
+		velocity = move_and_slide(velocity * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		if not is_carrying():
 			new_status = "Walking"
