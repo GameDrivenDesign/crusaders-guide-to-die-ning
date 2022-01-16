@@ -9,13 +9,10 @@ var nav_mesh_height = Vector3(0, 0.1, 0)
 
 var start_time
 
-func _ready():
-	start_time = OS.get_ticks_msec()
-
 func spawn_enemy(probability): # lower = more often ships
 	var positions = $EnemySpawnPoints.get_children()
 	var position = positions[int(rand_range(0, positions.size()))]
-			
+	
 	var enemy
 	if int(rand_range(0, probability)) == 0:
 		enemy = preload("res://ship/Ship.tscn").instance()
@@ -26,7 +23,10 @@ func spawn_enemy(probability): # lower = more often ships
 	enemy.target_node = $base_target.get_path()
 
 func _process(_delta):
-	if is_network_master():
+	if is_network_master() and get_tree().get_nodes_in_group("players").size() > 0:
+		if not start_time:
+			start_time = OS.get_ticks_msec()
+		
 		var delta = OS.get_ticks_msec() - start_time
 		
 		if delta > 240_000: # = 120 secs: go crazy
