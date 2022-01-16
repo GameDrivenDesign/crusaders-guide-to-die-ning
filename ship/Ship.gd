@@ -57,8 +57,11 @@ func _physics_process(delta):
 		current_target += NAV_OFFSET
 		var my_pos = global_transform.origin
 		var diff = current_target - my_pos
-		if diff.cross(Vector3.UP) != Vector3(): # check for alignment
-			look_at(current_target, Vector3.UP)
+		var look_at_target = current_target
+		look_at_target.y = my_pos.y
+		var look_at_target_diff = look_at_target - my_pos
+		if look_at_target_diff.cross(Vector3.UP) != Vector3(): # check for alignment
+			look_at(look_at_target, Vector3.UP)
 		var _vel = move_and_slide(diff, Vector3.UP)
 	update_target(delta)
 
