@@ -14,7 +14,7 @@ func set_stored_towers(num):
 	
 	for i in range(stored_towers - num):
 		# modification while iterating allowed, queue only marks
-		$tower_spawn.get_child(i).queue_free()
+		$tower_spawn.get_child($tower_spawn.get_children().size() - 1 - i).queue_free()
 	
 	stored_towers = num
 
