@@ -20,14 +20,10 @@
 [ext_resource path="res://models/chimney.glb" type="PackedScene" id=18]
 [ext_resource path="res://models/monorail_trackStraight.glb" type="PackedScene" id=19]
 [ext_resource path="res://models/monorail_trackCornerSmall.glb" type="PackedScene" id=20]
-[ext_resource path="res://models/pipe_split.glb" type="PackedScene" id=21]
 [ext_resource path="res://models/pipe_corner.glb" type="PackedScene" id=22]
 [ext_resource path="res://models/pipe_straight.glb" type="PackedScene" id=23]
-[ext_resource path="res://models/desk_chairStool.glb" type="PackedScene" id=24]
 [ext_resource path="res://models/pipe_rampLarge.glb" type="PackedScene" id=25]
 [ext_resource path="res://models/pipe_ringSupport.glb" type="PackedScene" id=26]
-[ext_resource path="res://models/desk_chairArms.glb" type="PackedScene" id=27]
-[ext_resource path="res://models/desk_chair.glb" type="PackedScene" id=28]
 [ext_resource path="res://models/pipe_entrance.glb" type="PackedScene" id=29]
 [ext_resource path="res://scenes/Restaurant.gd" type="Script" id=30]
 [ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=31]
@@ -293,30 +289,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.5, -1.5, 0, -2 )
 [node name="Dining" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.83516 )
 
-[node name="hangar_roundGlass3" parent="Dining" instance=ExtResource( 11 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -7 )
-visible = false
-
-[node name="corridor_end3" parent="Dining" instance=ExtResource( 17 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0, 0.5 )
-visible = false
-
-[node name="hangar_roundGlass4" parent="Dining" instance=ExtResource( 11 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 0, -7 )
-visible = false
-
-[node name="corridor_end4" parent="Dining" instance=ExtResource( 17 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, 0.5 )
-visible = false
-
-[node name="hangar_roundGlass" parent="Dining" instance=ExtResource( 11 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-visible = false
-
-[node name="corridor_end" parent="Dining" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.5 )
-visible = false
-
 [node name="hangar_roundGlass2" parent="Dining" instance=ExtResource( 11 )]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 7, 0, 0 )
 
@@ -329,55 +301,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.981447, 0, -10.895 )
 [node name="pipe_corner" parent="Piping" instance=ExtResource( 22 )]
 transform = Transform( -7.54979e-08, 1.52622e-07, -1, 1.50996e-07, -1, -1.52622e-07, -1, -1.50996e-07, 7.54979e-08, 12.5195, 0.6, 8.00177 )
 
-[node name="pipe_split" parent="Piping" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 4.5 )
-visible = false
-
-[node name="pipe_straight" parent="Piping" instance=ExtResource( 23 )]
-transform = Transform( -4.37114e-08, 0, 6, 0, 1, 0, -1, 0, -2.62268e-07, -1.5, 0, 8 )
-visible = false
-
-[node name="pipe_corner2" parent="Piping" instance=ExtResource( 22 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, 0, -5.5 )
-visible = false
-
-[node name="pipe_split2" parent="Piping" instance=ExtResource( 21 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, -5.5 )
-visible = false
-
-[node name="pipe_straight2" parent="Piping" instance=ExtResource( 23 )]
-transform = Transform( -4.37114e-08, 0, 6, 0, 1, 0, -1, 0, -2.62268e-07, -1.5, 0, -5 )
-visible = false
-
 [node name="pipe_rampLarge" parent="Piping" instance=ExtResource( 25 )]
 transform = Transform( 0.00757456, 0, 0.999971, 0, 1, 0, -0.999971, 0, 0.00757456, 10.4, 0, 8 )
 
-[node name="pipe_rampLarge2" parent="Piping" instance=ExtResource( 25 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 0, -5 )
-visible = false
-
 [node name="pipe_straight3" parent="Piping" instance=ExtResource( 23 )]
 transform = Transform( -4.37114e-08, 0, 3.71943, 0, 1, 0, -1, 0, -1.62581e-07, 9.76041, 0.6, 8.02 )
-
-[node name="pipe_straight4" parent="Piping" instance=ExtResource( 23 )]
-transform = Transform( -4.37114e-08, 0, 6, 0, 1, 0, -1, 0, -2.62268e-07, 7.4, 0.6, -5 )
-visible = false
-
-[node name="pipe_ringSupport" parent="Piping" instance=ExtResource( 26 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.8, 0, -9 )
-visible = false
-
-[node name="pipe_corner3" parent="Piping" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.8, -0.6, -6.7 )
-visible = false
-
-[node name="pipe_ringSupport2" parent="Piping" instance=ExtResource( 26 )]
-transform = Transform( -0.0455025, 0, -0.998964, 0, 1, 0, 0.998964, 0, -0.0455025, 15.0317, 0, -8.95 )
-visible = false
-
-[node name="pipe_entrance" parent="Piping" instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 17.8, -1.5, -6.7 )
-visible = false
 
 [node name="pipe_ringSupport3" parent="Piping" instance=ExtResource( 26 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.5853, 0, 4.02058 )
@@ -390,18 +318,6 @@ transform = Transform( -0.0455025, 0, -0.998964, 0, 1, 0, 0.998964, 0, -0.045502
 
 [node name="pipe_entrance2" parent="Piping" instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15.5853, -1.5, 6.32058 )
-
-[node name="desk_chairArms" parent="." instance=ExtResource( 27 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5678, 0, 0 )
-visible = false
-
-[node name="desk_chair" parent="." instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2445, 0, 0 )
-visible = false
-
-[node name="desk_chairStool" parent="." instance=ExtResource( 24 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2445, 0, 0 )
-visible = false
 
 [node name="emerald_dropoff" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.042, 0.261801, -1.34632 )
