@@ -226,6 +226,7 @@ shape = SubResource( 11 )
 
 [node name="Rocket" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7.63659 )
+visible = false
 
 [node name="base" parent="Rocket" instance=ExtResource( 5 )]
 
