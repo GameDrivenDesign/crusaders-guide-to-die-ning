@@ -4,7 +4,7 @@ export(NodePath) var target_node setget set_target_node
 
 export var speed = 0.5
 export var health = 50.0
-export var astronautNumber = 10
+export var astronautNumber = 5
 
 var path
 
@@ -16,10 +16,9 @@ func damage(amount):
 			rpc("_spawn_particles", global_transform)
 			rpc("_spawn_astronauts", global_transform)
 			$Sync.remove()
-			
-			
+
 remotesync func _spawn_astronauts(position):
-	for i in range(astronautNumber):
+	for _i in range(astronautNumber):
 		var astronaut = preload("res://astronaut/astronaut.tscn").instance()
 		astronaut.global_transform = position
 		astronaut.translation += Vector3(rand_range(-2, 2), 0, rand_range(-2, 2))
@@ -58,7 +57,7 @@ func _physics_process(delta):
 		var my_pos = global_transform.origin
 		if my_pos.distance_to(current_target) > 0.1:
 			look_at(current_target, Vector3(0, 1, 0))
-		move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
+		var _vel = move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
 	update_target(delta)
 
 func get_current_target():
@@ -91,26 +90,5 @@ func get_nav(target):
 	var nav = $"../Navigation"
 	var start = nav.get_closest_point(global_transform.origin)
 	var end = nav.get_closest_point(target)
-	var path = nav.get_simple_path(start, end, true)
-	# show_path(path)
-	return path
-
-# helper
-var current_path
-func show_path(p):
-	if current_path:
-		current_path.queue_free()
-	
-	var path = Array(p)
-	path.invert()
-	
-	var im = ImmediateGeometry.new()
-	add_child(im)
-	
-	im.clear()
-	im.set_material_override(SpatialMaterial.new())
-	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-	for x in p:
-		im.add_vertex(x + Vector3(0, 0.1, 0))
-	im.end()
-	current_path = im
+	var p = nav.get_simple_path(start, end, true)
+	return p

@@ -53,7 +53,7 @@ func _physics_process(delta):
 		var diff = current_target - my_pos
 		if diff.cross(Vector3.UP) != Vector3(): # check for alignment
 			look_at(current_target, Vector3.UP)
-		move_and_slide(diff, Vector3.UP)
+		var _vel = move_and_slide(diff, Vector3.UP)
 	update_target(delta)
 
 func get_current_target():

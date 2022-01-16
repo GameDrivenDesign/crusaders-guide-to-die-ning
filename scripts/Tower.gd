@@ -30,7 +30,7 @@ func shot_fired():
 
 func set_fuel(num):
 	fuel = num
-	set_crystals(ceil(float(fuel) / FUEL_PER_CRYSTAL))
+	set_crystals(int(ceil(float(fuel) / FUEL_PER_CRYSTAL)))
 
 func set_crystals(num: int):
 	var vertical_space = 0.07
