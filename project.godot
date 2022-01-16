@@ -28,7 +28,8 @@ _global_script_class_icons={
 
 config/name="CrusadersGuideToDie-ning"
 run/main_scene="res://menu/menu.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://assets/logo.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 
 [autoload]
 
