@@ -40,7 +40,8 @@ func _physics_process(delta):
 	var current_target = get_current_target()
 	if current_target:
 		var my_pos = global_transform.origin
-		look_at(current_target, Vector3(0, 1, 0))
+		if my_pos.distance_to(current_target) > 0.1:
+			look_at(current_target, Vector3(0, 1, 0))
 		move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
 	update_target(delta)
 

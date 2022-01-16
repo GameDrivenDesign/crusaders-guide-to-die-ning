@@ -4,12 +4,28 @@ var direction = Vector3(0,0,0)
 
 var old_position = Vector3(0,0,0)
 var collecting = 0
-var crystals = 0
 var collecting_time = 0
 export var collecting_time_total = 2
 
+var crystals = 0 setget set_crystals
 var status setget set_status
 var color setget set_color
+
+func set_crystals(num: int):
+	var vertical_space = 0.07
+	
+	# add new crystals if the number increased
+	for i in range(num - crystals):
+		var emerald_node = preload("res://crystal/emerald.tscn").instance()
+		emerald_node.transform.origin.y = vertical_space * (crystals + i)
+		$model/emeraldPlate.add_child(emerald_node)
+	
+	# remove old crystals if the number decreased
+	for i in range(crystals - num):
+		# modification while iterating allowed, queue only marks
+		$model/emeraldPlate.get_child(i).queue_free()
+	
+	crystals = num
 
 func set_status(new_status):
 	if new_status != status:
@@ -27,6 +43,7 @@ func set_color(col):
 func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
+		set_crystals(3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,11 +113,5 @@ func start_collecting():
 func stop_collecting():
 	collecting -= 1
 
-
 func get_crystal():
-	var vertical_space = 0.07
-	var emerald_node = preload("res://crystal/emerald.tscn").instance()
-	emerald_node.transform.origin.y = vertical_space * crystals
-	$model/emeraldPlate.add_child(emerald_node)
-	crystals += 1
-	
+	set_crystals(crystals + 1)

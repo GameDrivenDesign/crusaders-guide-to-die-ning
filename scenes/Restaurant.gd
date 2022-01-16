@@ -16,3 +16,8 @@ func store_emeralds(number: int):
 		tower.translation = Vector3(0.3 * $tower_spawn.get_child_count(), 0, 0)
 		$tower_spawn.add_child(tower)
 		stored_emeralds -= cost_per_tower
+
+func _on_dropoff_entered(body):
+	if body.is_in_group("players"):
+		store_emeralds(body.crystals)
+		body.crystals = 0

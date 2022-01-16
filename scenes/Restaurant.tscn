@@ -402,5 +402,6 @@ playback_speed = 0.3
 anims/RESET = SubResource( 8 )
 anims/hover = SubResource( 7 )
 
+[connection signal="body_entered" from="emerald_dropoff/Area" to="." method="_on_dropoff_entered"]
 [connection signal="ready" from="emerald_dropoff/MeshInstance/AnimationPlayer" to="emerald_dropoff/MeshInstance/AnimationPlayer" method="play" binds= [ "hover" ]]
 [connection signal="ready" from="tower_collect/Tower/AnimationPlayer" to="tower_collect/Tower/AnimationPlayer" method="play" binds= [ "hover" ]]

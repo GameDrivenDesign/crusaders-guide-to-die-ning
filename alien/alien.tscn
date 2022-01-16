@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://models/dark.material" type="Material" id=1]
 [ext_resource path="res://alien/alien.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://models/crystal.material" type="Material" id=5]
 [ext_resource path="res://models/metal.material" type="Material" id=6]
 [ext_resource path="res://alien/toolPickaxe.glb" type="PackedScene" id=7]
-[ext_resource path="res://crystal/emerald.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/multiplayer/Sync.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=12]
@@ -904,9 +903,6 @@ material/2 = null
 
 [node name="emeraldPlate" type="Spatial" parent="model"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00430919, 0.241198, -0.170722 )
-
-[node name="Spatial" parent="model/emeraldPlate" instance=ExtResource( 8 )]
-visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.193511, 0 )
