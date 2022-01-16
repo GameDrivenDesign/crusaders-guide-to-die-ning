@@ -37,7 +37,7 @@ jobs:
     - uses: gamedrivendesign/docker-godot-export@gh-action
       name: Build Server
       with:
-        export-template: ServerWebsockets
+        export-template: ServerNative
         output-filename: server
     - uses: appleboy/ssh-action@master
       env:
