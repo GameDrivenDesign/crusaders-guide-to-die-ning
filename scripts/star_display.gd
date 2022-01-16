@@ -10,6 +10,9 @@ func _ready():
 	pass # Replace with function body.
 
 func decrement_star_count():
+	if not is_network_master():
+		return
+	
 	current_star_count -= 1
 	
 	if current_star_count <= 0:
