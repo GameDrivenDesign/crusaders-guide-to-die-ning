@@ -12,6 +12,12 @@ var status setget set_status
 var color setget set_color
 var carrying_tower = false setget set_carrying_tower
 
+var player_name = "" setget set_player_name
+
+func set_player_name(n):
+	player_name = n
+	$name/name_view/label.text = n
+
 func set_carrying_tower(b):
 	if carrying_tower == b:
 		return
@@ -59,8 +65,11 @@ func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 		set_crystals(3)
+		player_name = Global.player_name
+	
+	yield(get_tree().create_timer(1), "timeout")
+	set_player_name(Global.player_name)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
 
@@ -104,7 +113,6 @@ func _physics_process(delta):
 
 	if collecting > 0 and not moving:
 		new_status = "Pickaxing"
-		var emerald_offset = 0.2
 		collecting_time += delta
 		if collecting_time > collecting_time_total:
 			get_crystal()

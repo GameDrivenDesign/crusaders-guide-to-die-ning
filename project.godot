@@ -27,8 +27,12 @@ _global_script_class_icons={
 [application]
 
 config/name="CrusadersGuideToDie-ning"
-run/main_scene="res://game/game.tscn"
+run/main_scene="res://menu/menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://game/global.gd"
 
 [editor_plugins]
 

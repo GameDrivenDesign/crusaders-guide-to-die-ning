@@ -7,6 +7,8 @@ export var health = 10.0
 
 var path
 
+const NAV_OFFSET = Vector3(0, -0.3, 0)
+
 func damage(amount):
 	if is_network_master():
 		health -= amount
@@ -28,21 +30,30 @@ remotesync func spawn_food(pos):
 	get_parent().add_child(p)
 	p.global_transform.origin = pos + Vector3(0, 0.3, 0)
 
+remotesync func decrement_star_count():
+	$"../Camera/hud/star_display".decrement_star_count()
+
 func _physics_process(delta):
 	if not target_node:
 		return
 	var target = get_target_position()
-	if target.distance_to(global_transform.origin) < 2:
+	
+	if target.distance_to(global_transform.origin) < 2: # restaurant reached!
 		rpc("spawn_food", global_transform.origin)
+		
+		rpc("decrement_star_count")
 		$Sync.remove()
+		
 		return
 	
 	var current_target = get_current_target()
 	if current_target:
+		current_target += NAV_OFFSET
 		var my_pos = global_transform.origin
-		if my_pos.distance_to(current_target) > 0.1:
-			look_at(current_target, Vector3(0, 1, 0))
-		move_and_slide(current_target - my_pos, Vector3(0, 1, 0))
+		var diff = current_target - my_pos
+		if diff.cross(Vector3.UP) != Vector3(): # check for alignment
+			look_at(current_target, Vector3.UP)
+		move_and_slide(diff, Vector3.UP)
 	update_target(delta)
 
 func get_current_target():
@@ -75,18 +86,15 @@ func get_nav(target):
 	var nav = $"../Navigation"
 	var start = nav.get_closest_point(global_transform.origin)
 	var end = nav.get_closest_point(target)
-	var path = nav.get_simple_path(start, end, true)
+	var p = nav.get_simple_path(start, end, true)
 	# show_path(path)
-	return path
+	return p
 
 # helper
 var current_path
 func show_path(p):
 	if current_path:
 		current_path.queue_free()
-	
-	var path = Array(p)
-	path.invert()
 	
 	var im = ImmediateGeometry.new()
 	add_child(im)

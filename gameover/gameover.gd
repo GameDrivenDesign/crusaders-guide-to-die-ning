@@ -6,7 +6,7 @@ func _ready():
 func _on_start_pressed():
 	start()
 
-func _on_name_text_entered(_new_text):
+func _on_name_text_entered(new_text):
 	start()
 
 func start():
@@ -15,8 +15,4 @@ func start():
 	$menu/container/name.editable = false
 	if $menu/container/name.text.length() > 0:
 		Global.player_name = $menu/container/name.text
-	assert(get_tree().change_scene_to(load("res://game/game.tscn")) == OK)
-
-
-func _on_menu_pressed(): # exit to menu
-	get_tree().change_scene_to(load("res://menu/menu.tscn"))
+	get_tree().change_scene_to(preload("res://game/game.tscn"))

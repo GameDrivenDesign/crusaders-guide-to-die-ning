@@ -7,7 +7,7 @@ var pointB = null
 
 var nav_mesh_height = Vector3(0, 0.1, 0)
 
-func _process(delta):
+func _process(_delta):
 	if is_network_master():
 		if int(rand_range(0, 5)) == 0:
 			var positions = $EnemySpawnPoints.get_children()
