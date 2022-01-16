@@ -1,6 +1,6 @@
 extends TextureRect
 
-var current_star_count = 10
+var current_star_count = 1 setget set_star_count
 export var texture_size = 1200 
 
 export var enable_gameover = true
@@ -9,12 +9,20 @@ export var enable_gameover = true
 func _ready():
 	pass # Replace with function body.
 
-func decrement_star_count():
-	current_star_count -= 1
-	
-	if current_star_count <= 0:
-		if enable_gameover:
-			assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
+master func decrement_star_count():
+	if not is_network_master():
 		return
 	
-	self.rect_size.x -= texture_size
+	set_star_count(current_star_count - 1)
+
+func set_star_count(num):
+	current_star_count = num
+	if current_star_count <= 0:
+		if enable_gameover:
+			rpc("change_to_gameover")
+	else:
+		self.rect_size.x = num * texture_size
+
+remotesync func change_to_gameover():
+	assert(get_tree().change_scene_to(load("res://gameover/gameover.tscn")) == OK)
+	get_node("/root/NetworkGame").disconnect_all()
