@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://models/skin.material" type="Material" id=1]
 [ext_resource path="res://models/rockDark.material" type="Material" id=2]
@@ -20,13 +20,22 @@
 [ext_resource path="res://models/crater.glb" type="PackedScene" id=18]
 [ext_resource path="res://models/meteor_detailed.glb" type="PackedScene" id=19]
 [ext_resource path="res://restaurant/title.glb" type="PackedScene" id=20]
+[ext_resource path="res://menu/menu.gd" type="Script" id=21]
 
 [sub_resource type="DynamicFont" id=19]
 size = 64
 font_data = ExtResource( 11 )
 
+[sub_resource type="DynamicFont" id=24]
+size = 32
+font_data = ExtResource( 11 )
+
 [sub_resource type="DynamicFont" id=22]
 size = 24
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 22
 font_data = ExtResource( 11 )
 
 [sub_resource type="ArrayMesh" id=1]
@@ -729,14 +738,23 @@ background_sky = SubResource( 21 )
 background_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="menu" type="Spatial"]
+script = ExtResource( 21 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="menu" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 62.0
-margin_top = 36.0
-margin_right = 953.0
-margin_bottom = 229.0
+[node name="container" type="VBoxContainer" parent="menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -310.0
+margin_right = 310.0
+margin_bottom = 278.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="menu/container"]
+margin_right = 620.0
+margin_bottom = 193.0
 custom_fonts/font = SubResource( 19 )
 text = "Crusaders' Guide to
 Die-ning"
@@ -745,14 +763,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="loading" type="Label" parent="CanvasLayer"]
-margin_left = 62.0
-margin_top = 374.0
-margin_right = 953.0
-margin_bottom = 567.0
+[node name="name" type="LineEdit" parent="menu/container"]
+margin_top = 197.0
+margin_right = 620.0
+margin_bottom = 255.0
+custom_fonts/font = SubResource( 24 )
+placeholder_text = "Enter your name ..."
+
+[node name="loading" type="Label" parent="menu/container"]
+visible = false
+margin_top = 259.0
+margin_right = 620.0
+margin_bottom = 296.0
 custom_fonts/font = SubResource( 22 )
 text = "Loading ..."
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Button" parent="menu/container"]
+margin_top = 259.0
+margin_right = 620.0
+margin_bottom = 299.0
+custom_fonts/font = SubResource( 23 )
+text = "Defend the Restaurant!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1008,3 +1043,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.156567, -0.264272, 4.57725 )
 
 [node name="title" parent="." instance=ExtResource( 20 )]
 transform = Transform( -0.797573, 0, 0.603222, 0, 1, 0, -0.603222, 0, -0.797573, -7.81815, -0.00120449, 6.36764 )
+
+[connection signal="text_entered" from="menu/container/name" to="." method="_on_name_text_entered"]
+[connection signal="pressed" from="menu/container/start" to="." method="_on_start_pressed"]

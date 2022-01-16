@@ -59,12 +59,12 @@ func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 		set_crystals(3)
+		$name/name_view/label.text = Global.player_name
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
 
-func _process(delta):
+func _physics_process(delta):
 	var new_status = "Idle"
 	if is_carrying():
 		new_status = "IdleCarrying"
@@ -84,7 +84,7 @@ func _process(delta):
 		new_direction += Vector3(-1,0,1)
 	if moving == true:
 		direction = new_direction.normalized()
-		move_and_slide(direction * speed)
+		move_and_slide(Vector3(direction.x, -0.5, direction.z) * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
 		if not is_carrying():
 			new_status = "Walking"

@@ -35,7 +35,8 @@ func _physics_process(delta):
 	if not target_node:
 		return
 	var target = get_target_position()
-	if target.distance_to(global_transform.origin) < 3: # restaurant reached!
+	
+	if target.distance_to(global_transform.origin) < 2: # restaurant reached!
 		rpc("spawn_food", global_transform.origin)
 		
 		rpc("decrement_star_count")

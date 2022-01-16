@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://models/rocket_topA.glb" type="PackedScene" id=1]
 [ext_resource path="res://models/rocket_sidesA.glb" type="PackedScene" id=2]
@@ -32,6 +32,15 @@
 [ext_resource path="res://scenes/Restaurant.gd" type="Script" id=30]
 [ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=31]
 [ext_resource path="res://restaurant/title.glb" type="PackedScene" id=32]
+[ext_resource path="res://models/food/apple.glb" type="PackedScene" id=33]
+[ext_resource path="res://models/food/cake.glb" type="PackedScene" id=34]
+[ext_resource path="res://models/food/candyBar.glb" type="PackedScene" id=35]
+[ext_resource path="res://models/food/cookie.glb" type="PackedScene" id=36]
+[ext_resource path="res://models/food/iceCream.glb" type="PackedScene" id=37]
+[ext_resource path="res://models/food/pizza.glb" type="PackedScene" id=38]
+[ext_resource path="res://models/food/sodaCan.glb" type="PackedScene" id=39]
+[ext_resource path="res://models/food/burgerDouble.glb" type="PackedScene" id=40]
+[ext_resource path="res://models/food/burgerCheese.glb" type="PackedScene" id=41]
 
 [sub_resource type="CylinderShape" id=6]
 radius = 1.32502
@@ -441,6 +450,131 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0433, 1.13905, 0.891726 )
 playback_speed = 0.2
 anims/RESET = SubResource( 10 )
 anims/hover = SubResource( 9 )
+
+[node name="food" type="Spatial" parent="."]
+
+[node name="apple" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68465, 0, -0.444902 )
+
+[node name="apple3" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.76298, -2.38419e-07, 1.27458 )
+
+[node name="apple4" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4781, -2.38419e-07, 2.11431 )
+
+[node name="apple5" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2099, -2.38419e-07, 2.25873 )
+
+[node name="apple6" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3999, -2.38419e-07, 2.2896 )
+
+[node name="apple7" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3999, 0.110289, 1.43936 )
+
+[node name="cake" parent="food" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.33689, 0, 0 )
+
+[node name="burgerDouble" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.77898, 0, -0.774952 )
+
+[node name="burgerDouble2" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43323, 0, -1.54459 )
+
+[node name="burgerDouble3" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78766, -2.38419e-07, 1.00923 )
+
+[node name="burgerDouble4" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2869, -2.38419e-07, 1.80657 )
+
+[node name="burgerDouble5" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8682, -2.38419e-07, -0.239395 )
+
+[node name="burgerCheese" parent="food" instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56043, 0, 0 )
+
+[node name="burgerCheese2" parent="food" instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34984, 0, 1.47246 )
+
+[node name="burgerCheese3" parent="food" instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1157, 0, 0.417283 )
+
+[node name="burgerCheese4" parent="food" instance=ExtResource( 41 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7958, 0, -3.90941 )
+
+[node name="burgerDouble6" parent="food" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.758, -2.38419e-07, 0.921639 )
+
+[node name="cake5" parent="food" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7899, 0, -1.57726 )
+
+[node name="cake3" parent="food" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1064, 0, 1.57082 )
+
+[node name="pizza" parent="food" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0933, 9.53674e-07, 1.68267 )
+
+[node name="pizza2" parent="food" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93003, 1.43051e-06, 0.55367 )
+
+[node name="pizza3" parent="food" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28777, 1.43051e-06, -3.35957 )
+
+[node name="sodaCan" parent="food" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24428, 0, -0.597184 )
+
+[node name="sodaCan2" parent="food" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73086, 1.19209e-07, 0.632433 )
+
+[node name="sodaCan3" parent="food" instance=ExtResource( 39 )]
+transform = Transform( 0.212109, 0.977246, 0, -0.977246, 0.212109, 0, 0, 0, 1, 10.0435, 0, 1.67035 )
+
+[node name="sodaCan4" parent="food" instance=ExtResource( 39 )]
+transform = Transform( 0.0951229, 0.438257, -0.893802, -0.977246, 0.212109, 0, 0.189584, 0.873465, 0.448461, 12.808, 0, 1.77347 )
+
+[node name="sodaCan6" parent="food" instance=ExtResource( 39 )]
+transform = Transform( -0.206868, -0.953097, -0.220936, -0.977246, 0.212109, 0, 0.0468626, 0.215909, -0.975288, 13.734, 0, 1.35489 )
+
+[node name="sodaCan5" parent="food" instance=ExtResource( 39 )]
+transform = Transform( 0.899768, 0.0282796, -0.435451, -0.167111, 0.944154, -0.283985, 0.403102, 0.328289, 0.854246, 13.6826, 0, 0.334991 )
+
+[node name="pizza4" parent="food" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75816, 1.43051e-06, -5.42729 )
+
+[node name="cake4" parent="food" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9964, 0, 1.26961 )
+
+[node name="candyBar" parent="food" instance=ExtResource( 35 )]
+transform = Transform( -0.257605, 0, -0.96625, 0, 1, 0, 0.96625, 0, -0.257605, 7.23133, -4.76837e-07, -1.82699 )
+
+[node name="cookie" parent="food" instance=ExtResource( 36 )]
+transform = Transform( 0.743892, 0, -0.6683, 0, 1, 0, 0.6683, 0, 0.743892, 7.08245, 0, -2.58792 )
+
+[node name="cookie2" parent="food" instance=ExtResource( 36 )]
+transform = Transform( 0.743892, 0, -0.6683, 0, 1, 0, 0.6683, 0, 0.743892, 7.32724, 0, -2.62795 )
+
+[node name="iceCream" parent="food" instance=ExtResource( 37 )]
+transform = Transform( 0.943678, -0.242326, -0.225278, -0.202795, 0.114367, -0.97252, 0.261431, 0.963431, 0.0587833, 7.36535, 0, -1.33458 )
+
+[node name="iceCream2" parent="food" instance=ExtResource( 37 )]
+transform = Transform( 0.191714, -0.969299, -0.153966, -0.202795, 0.114367, -0.97252, 0.960271, 0.21767, -0.174643, 8.40291, -2.38419e-07, -0.00668287 )
+
+[node name="iceCream4" parent="food" instance=ExtResource( 37 )]
+transform = Transform( 0.191714, -0.969299, -0.153966, -0.202795, 0.114367, -0.97252, 0.960271, 0.21767, -0.174643, 13.5221, -2.38419e-07, 0.62729 )
+
+[node name="iceCream3" parent="food" instance=ExtResource( 37 )]
+transform = Transform( -0.57066, -0.820879, 0.0224626, -0.202795, 0.114367, -0.97252, 0.795752, -0.559534, -0.231735, 8.61411, -2.38419e-07, 1.09381 )
+
+[node name="cookie3" parent="food" instance=ExtResource( 36 )]
+transform = Transform( 0.943678, -0.242326, -0.225278, 0.161854, 0.931945, -0.324473, 0.288575, 0.269736, 0.918677, 7.24868, 0.0383258, -2.52559 )
+
+[node name="candyBar2" parent="food" instance=ExtResource( 35 )]
+transform = Transform( 0.743892, 0, -0.6683, 0, 1, 0, 0.6683, 0, 0.743892, 7.95175, -2.38419e-07, -3.12187 )
+
+[node name="cake2" parent="food" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34844, 4.76837e-07, -4.22248 )
+
+[node name="apple2" parent="food" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76974, 0, -0.968312 )
 
 [connection signal="body_entered" from="emerald_dropoff/Area" to="." method="_on_dropoff_entered"]
 [connection signal="ready" from="emerald_dropoff/MeshInstance/AnimationPlayer" to="emerald_dropoff/MeshInstance/AnimationPlayer" method="play" binds= [ "hover" ]]
