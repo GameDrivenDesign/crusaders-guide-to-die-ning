@@ -41,9 +41,10 @@ func set_crystals(num: int):
 		$fuel_indicator.get_child($fuel_indicator.get_child_count() - 1 - i).queue_free()
 
 remotesync func store_emeralds(count):
-	set_fuel(fuel + count * FUEL_PER_CRYSTAL)
+	if is_network_master():
+		set_fuel(fuel + count * FUEL_PER_CRYSTAL)
 
 func _on_refuel_entered(body):
 	if body.is_in_group("players") and body.is_network_master() and body.crystals > 0:
-		rpc_id(1, "store_emeralds", body.crystals)
+		rpc("store_emeralds", body.crystals)
 		body.crystals = 0
