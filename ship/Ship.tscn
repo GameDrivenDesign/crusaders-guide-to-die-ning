@@ -290,10 +290,10 @@ health = 40.0
 transform = Transform( 0.3, 0, 0, 0, 0.298474, -0.0302232, 0, 0.0302232, 0.298474, 0.218162, 0.0160038, 0.168958 )
 
 [node name="model2" type="Spatial" parent="model"]
-transform = Transform( 0.8, 0, 0, 0, 0.79593, 0.0805951, 0, -0.0805951, 0.79593, -0.721484, 2.57819, 1.50544 )
+transform = Transform( 1.6, 0, 0, 0, 1.59186, 0.16119, 0, -0.16119, 1.59186, -0.721484, 2.59676, 1.68879 )
 
 [node name="armLeft" type="MeshInstance" parent="model/model2"]
-transform = Transform( 0.853408, 0.0924386, -4.04062e-09, 0, -3.75219e-08, -0.8584, -0.0924385, 0.853408, -3.73037e-08, -0.13, 0.473184, -0.0123243 )
+transform = Transform( 0.855955, 0.0516294, -0.0390594, -0.0638863, 0.589809, -0.620398, -0.0104768, 0.621538, 0.591972, -0.13, 0.473184, -0.0123242 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 material/0 = null
@@ -301,7 +301,7 @@ material/1 = null
 material/2 = null
 
 [node name="armRight" type="MeshInstance" parent="model/model2"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.13, 0.473184, -0.0123243 )
+transform = Transform( 1, 0, 0, 0, 0.756162, -0.654384, 0, 0.654384, 0.756162, 0.13, 0.473184, -0.0123243 )
 mesh = SubResource( 5 )
 skeleton = NodePath("")
 material/0 = null
@@ -317,7 +317,7 @@ material/1 = null
 material/2 = null
 
 [node name="head" type="MeshInstance" parent="model/model2"]
-transform = Transform( 0.259805, 0.00196332, -0.00986685, -0.00447437, 0.250943, -0.0678804, 0.00901051, 0.0679993, 0.250789, -0.00655912, 0.483186, -0.00497627 )
+transform = Transform( 0.259789, -0.00338196, -0.0099135, 0.00255538, 0.259103, -0.0214244, 0.010158, 0.0213095, 0.258926, -0.00655912, 0.508752, -0.00497544 )
 mesh = SubResource( 7 )
 skeleton = NodePath("")
 material/0 = null
@@ -341,10 +341,10 @@ material/1 = null
 material/2 = null
 
 [node name="model3" type="Spatial" parent="model"]
-transform = Transform( 0.64, 0, 0, 0, 0.627008, 0.128296, 0, -0.128296, 0.627008, -0.723374, 4.97272, -0.969665 )
+transform = Transform( 1.6, 0, 0, 0, 1.56752, 0.32074, 0, -0.32074, 1.56752, -0.723374, 4.85862, -0.825839 )
 
 [node name="armLeft" type="MeshInstance" parent="model/model3"]
-transform = Transform( 0.853408, 0.0924386, -4.04062e-09, -0.0910992, 0.841044, -0.145591, -0.0156783, 0.144745, 0.845964, -0.13, 0.473184, -0.0123245 )
+transform = Transform( 0.830804, 0.215728, -0.00870395, -0.214063, 0.818545, -0.144956, -0.0281295, 0.142467, 0.846028, -0.13, 0.473185, -0.0123245 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 material/0 = null
@@ -392,7 +392,7 @@ material/1 = null
 material/2 = null
 
 [node name="model4" type="Spatial" parent="model"]
-transform = Transform( 0.8, 0, 0, 0, 0.79593, 0.0805951, 0, -0.0805951, 0.79593, -0.720603, 1.42007, -3.18159 )
+transform = Transform( 1.6, 0, 0, 0, 1.59186, 0.16119, 0, -0.16119, 1.59186, -0.720603, 1.42007, -3.18159 )
 
 [node name="armLeft" type="MeshInstance" parent="model/model4"]
 transform = Transform( 0.853408, 0.0924386, -4.04062e-09, 0.0461787, -0.42633, -0.743614, -0.0800775, 0.739289, -0.428824, -0.13, 0.473184, -0.0123236 )
@@ -443,10 +443,10 @@ material/1 = null
 material/2 = null
 
 [node name="model5" type="Spatial" parent="model"]
-transform = Transform( 0.0221001, -1.24129e-08, 0.799695, -0.00633667, 0.799975, 0.000175131, -0.799668, -0.00633911, 0.0220994, -1.21764, 1.56693, -1.66956 )
+transform = Transform( 0.0442002, -2.58209e-08, 1.59939, -0.00996573, 1.59997, 0.000275435, -1.59936, -0.00996952, 0.0441994, -0.645326, 0.521211, 0.0138345 )
 
 [node name="armLeft" type="MeshInstance" parent="model/model5"]
-transform = Transform( 0.854093, 0.0815678, 0.0268854, -0.0347731, 0.574131, -0.637193, -0.07853, 0.632907, 0.574555, -0.13, 0.473184, -0.0123238 )
+transform = Transform( 0.797581, 0.30889, 0.0728147, 0.314937, -0.746111, -0.284575, -0.0391129, 0.291128, -0.806577, -0.13, 0.473184, -0.0123238 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 material/0 = null
@@ -494,10 +494,10 @@ material/1 = null
 material/2 = null
 
 [node name="model6" type="Spatial" parent="model"]
-transform = Transform( -0.0421844, -0.0020352, -0.798885, 0.00192592, 0.799995, -0.00213972, 0.798884, -0.00203602, -0.0421792, -0.270598, 1.56693, -1.6617 )
+transform = Transform( -0.0843689, -0.00407039, -1.59777, 0.00385184, 1.59999, -0.00427945, 1.59777, -0.00407213, -0.0843585, -0.270598, 1.56693, -1.77275 )
 
 [node name="armLeft" type="MeshInstance" parent="model/model6"]
-transform = Transform( 0.855436, 0.0705657, -0.01002, -0.0531893, 0.551717, -0.655463, -0.047443, 0.65382, 0.554184, -0.13, 0.473184, -0.0123237 )
+transform = Transform( 0.85421, -0.0305982, -0.0789946, -0.0236044, 0.682781, -0.519718, 0.0813588, 0.519353, 0.678606, -0.155214, 0.394604, -0.0708736 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 material/0 = null
@@ -505,7 +505,7 @@ material/1 = null
 material/2 = null
 
 [node name="armRight" type="MeshInstance" parent="model/model6"]
-transform = Transform( 0.9824, 0.0459489, 0.181051, 0.103457, 0.673171, -0.732215, -0.155522, 0.738059, 0.656569, 0.129999, 0.473185, -0.0123239 )
+transform = Transform( 0.980686, 0.0316788, 0.193008, 0.0607278, 0.88871, -0.454431, -0.185923, 0.457374, 0.869622, 0.138984, 0.392754, -0.0628031 )
 mesh = SubResource( 5 )
 skeleton = NodePath("")
 material/0 = null
@@ -513,7 +513,7 @@ material/1 = null
 material/2 = null
 
 [node name="body" type="MeshInstance" parent="model/model6"]
-transform = Transform( 0.999977, -0.00681363, -0.000110876, 0.00677126, 0.991667, 0.128652, -0.000766631, -0.128649, 0.99169, -0.00200534, 0.223184, -0.00497627 )
+transform = Transform( 0.999559, -0.0288793, -0.00696548, 0.0280741, 0.841597, 0.539376, -0.0097147, -0.539334, 0.842036, -0.00200534, 0.223184, -0.0049762 )
 mesh = SubResource( 6 )
 skeleton = NodePath("")
 material/0 = null
@@ -521,7 +521,7 @@ material/1 = null
 material/2 = null
 
 [node name="head" type="MeshInstance" parent="model/model6"]
-transform = Transform( 0.259814, -0.000152554, -0.00983787, 0.00124565, 0.258387, 0.0288927, 0.00975987, -0.0289192, 0.258202, -0.00865865, 0.483085, -0.0447227 )
+transform = Transform( 0.259652, -0.00643015, -0.0118099, 0.0119424, 0.215221, 0.145386, 0.00618036, -0.145735, 0.215228, -0.0178355, 0.482642, -0.218513 )
 mesh = SubResource( 7 )
 skeleton = NodePath("")
 material/0 = null
