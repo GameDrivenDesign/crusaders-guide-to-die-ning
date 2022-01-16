@@ -4,7 +4,7 @@
 
 [sub_resource type="SphereMesh" id=1]
 
-[node name="Spatial" type="Spatial"]
+[node name="emerald" type="Spatial"]
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

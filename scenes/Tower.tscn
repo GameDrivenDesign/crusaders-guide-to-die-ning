@@ -82,4 +82,4 @@ shape = SubResource( 3 )
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource( 6 )
-synced = PoolStringArray( "transform" )
+synced = PoolStringArray( "transform", "active" )
