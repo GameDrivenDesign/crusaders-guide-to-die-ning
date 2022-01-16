@@ -18,7 +18,7 @@ var velocity = Vector3(0, 0, 0)
 
 func set_player_name(n):
 	player_name = n
-	$name/name_view/label.text = n
+	$name_view/label.text = n
 
 func set_carrying_tower(b):
 	if carrying_tower == b:
@@ -67,10 +67,10 @@ func _network_ready(is_source):
 	if is_source:
 		set_color(Color.from_hsv(rand_range(0, 360), 1, 1))
 		set_crystals(3)
-		player_name = Global.player_name
 	
-	yield(get_tree().create_timer(1), "timeout")
-	set_player_name(Global.player_name)
+	yield(get_tree(), "idle_frame")
+	if is_network_master():
+		set_player_name(Global.player_name)
 
 func _ready():
 	global_transform.origin = $"../SpawnPoint".global_transform.origin
