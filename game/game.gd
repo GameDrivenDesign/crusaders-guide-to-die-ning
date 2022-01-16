@@ -11,7 +11,7 @@ func spawn_enemy(probability): # lower = more often ships
 	var position = positions[int(rand_range(0, positions.size()))]
 	
 	var enemy
-	if false and int(rand_range(0, probability)) == 0:
+	if int(rand_range(0, probability)) == 0:
 		enemy = preload("res://ship/Ship.tscn").instance()
 	else:
 		enemy = preload("res://astronaut/astronaut.tscn").instance()
@@ -31,11 +31,11 @@ func _process(_delta):
 				spawn_enemy(1)
 		
 		elif delta > 120_000: # = 60 secs: start spawning more ships
-			if int(rand_range(0, 100)) == 0:
+			if int(rand_range(0, 50)) == 0:
 				spawn_enemy(10)
 		
 		elif delta > 60_000: # = 20 secs: start spawning some ships
-			if int(rand_range(0, 100)) == 0:
+			if int(rand_range(0, 70)) == 0:
 				spawn_enemy(50)
 		
 		elif delta > 20_000: # = 10 secs: start spawning more of astronauts
