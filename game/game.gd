@@ -2,9 +2,6 @@ extends Spatial
 
 onready var plane = Plane(Vector3(0, 1, 0), 0)
 
-var pointA = null
-var pointB = null
-
 var nav_mesh_height = Vector3(0, 0.1, 0)
 
 var start_time

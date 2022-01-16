@@ -35,7 +35,6 @@ remote func collect_tower():
 		return true
 	return false
 
-
 func _on_FoodArea_body_entered(body):
-	if body.is_in_group("enemy"):
+	if is_network_master() and body.is_in_group("enemy"):
 		body.die()
