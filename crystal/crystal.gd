@@ -17,10 +17,10 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	if body.is_in_group("players"):
+	if body.is_in_group("players") and not body.carrying_tower:
 		body.start_collecting()
 
 
 func _on_Area_body_exited(body):
-	if body.is_in_group("players"):
+	if body.is_in_group("players") and not body.carrying_tower:
 		body.stop_collecting()

@@ -7,7 +7,7 @@ var stored_emeralds = 0
 func _ready():
 	store_emeralds(14)
 
-func store_emeralds(number: int):
+master func store_emeralds(number: int):
 	stored_emeralds += number
 	
 	while stored_emeralds >= cost_per_tower:
@@ -18,6 +18,19 @@ func store_emeralds(number: int):
 		stored_emeralds -= cost_per_tower
 
 func _on_dropoff_entered(body):
-	if body.is_in_group("players"):
-		store_emeralds(body.crystals)
+	if body.is_in_group("players") and body.is_network_master() and body.crystals > 0:
+		rpc("store_emeralds", body.crystals)
 		body.crystals = 0
+
+func _on_tower_collect_entered(body):
+	if body.is_in_group("players") and body.is_network_master() and not body.is_carrying():
+		# fixme may cause race conditions
+		if $tower_spawn.get_child_count() > 0:
+			body.carrying_tower = true
+		rpc("collect_tower")
+
+master func collect_tower():
+	if $tower_spawn.get_child_count() > 0:
+		$tower_spawn.get_child($tower_spawn.get_child_count() - 1).queue_free()
+		return true
+	return false

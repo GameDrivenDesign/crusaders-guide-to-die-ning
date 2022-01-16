@@ -904,6 +904,9 @@ material/2 = null
 [node name="emeraldPlate" type="Spatial" parent="model"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00430919, 0.241198, -0.170722 )
 
+[node name="tower_carry_position" type="Spatial" parent="model"]
+transform = Transform( 0.600923, 0, -0.799307, 0, 1, 0, 0.799307, 0, 0.600923, 0, 0.463188, -0.396322 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.193511, 0 )
 shape = SubResource( 10 )

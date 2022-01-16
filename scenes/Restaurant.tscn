@@ -395,7 +395,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24212, 1, 0.864177 )
 shape = SubResource( 1 )
 
 [node name="Tower" parent="tower_collect" instance=ExtResource( 31 )]
-transform = Transform( -0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 1.60035, 1.17694, -0.544993 )
+transform = Transform( -0.6, 0, 5.24537e-08, 0, 0.6, 0, -5.24537e-08, 0, -0.6, 1.60035, 1.17694, -0.544993 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="tower_collect/Tower"]
 playback_speed = 0.3
@@ -404,4 +404,5 @@ anims/hover = SubResource( 7 )
 
 [connection signal="body_entered" from="emerald_dropoff/Area" to="." method="_on_dropoff_entered"]
 [connection signal="ready" from="emerald_dropoff/MeshInstance/AnimationPlayer" to="emerald_dropoff/MeshInstance/AnimationPlayer" method="play" binds= [ "hover" ]]
+[connection signal="body_entered" from="tower_collect/Area" to="." method="_on_tower_collect_entered"]
 [connection signal="ready" from="tower_collect/Tower/AnimationPlayer" to="tower_collect/Tower/AnimationPlayer" method="play" binds= [ "hover" ]]

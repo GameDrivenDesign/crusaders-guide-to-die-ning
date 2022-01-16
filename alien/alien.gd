@@ -10,6 +10,18 @@ export var collecting_time_total = 2
 var crystals = 0 setget set_crystals
 var status setget set_status
 var color setget set_color
+var carrying_tower = false setget set_carrying_tower
+
+func set_carrying_tower(b):
+	if carrying_tower == b:
+		return
+	if b:
+		var tower = preload("res://scenes/Tower.tscn").instance()
+		tower.active = false
+		$model/tower_carry_position.add_child(tower)
+	else:
+		$model/tower_carry_position.get_child(0).queue_free()
+	carrying_tower = b
 
 func set_crystals(num: int):
 	var vertical_space = 0.07
@@ -26,6 +38,9 @@ func set_crystals(num: int):
 		$model/emeraldPlate.get_child(i).queue_free()
 	
 	crystals = num
+
+func is_carrying():
+	return crystals > 0 or carrying_tower
 
 func set_status(new_status):
 	if new_status != status:
@@ -51,7 +66,7 @@ func _ready():
 
 func _process(delta):
 	var new_status = "Idle"
-	if crystals > 0:
+	if is_carrying():
 		new_status = "IdleCarrying"
 	var moving = false
 	var new_direction = Vector3(0,0,0)
@@ -71,11 +86,11 @@ func _process(delta):
 		direction = new_direction.normalized()
 		move_and_slide(direction * speed)
 		look_at(direction + global_transform.origin, Vector3.UP)
-		if crystals == 0:
+		if not is_carrying():
 			new_status = "Walking"
 		else:
 			new_status = "Carrying"
-		
+	
 	# camera movement
 	var camera = get_viewport().get_camera()
 	var pos_delta = self.translation - old_position
@@ -84,7 +99,7 @@ func _process(delta):
 	
 	camera.translation += pos_delta
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and carrying_tower:
 		spawn_tower()
 
 	if collecting > 0 and not moving:
@@ -99,17 +114,17 @@ func _process(delta):
 	set_status(new_status)
 
 func spawn_tower():
+	set_carrying_tower(false)
 	var offset = 1
 	var tower_node = preload("res://scenes/Tower.tscn").instance()
+	tower_node.active = true
 	tower_node.set_network_master(get_network_master())
 	get_parent().add_child(tower_node)
 	tower_node.global_transform.origin = global_transform.origin + direction * offset
 
-
 func start_collecting():
 	collecting += 1
 
-	
 func stop_collecting():
 	collecting -= 1
 
