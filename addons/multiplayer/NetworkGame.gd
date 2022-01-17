@@ -44,7 +44,7 @@ func connect_via_cli():
 				'--ip': ip = key_value[1]
 				'--port': port = int(key_value[1])
 	
-	if is_on_web() or "--client" in OS.get_cmdline_args() or OS.get_environment("USE_CLIENT") == "true":
+	if not OS.has_feature("combined") and is_on_web() or "--client" in OS.get_cmdline_args() or OS.get_environment("USE_CLIENT") == "true":
 		connect_client(ip, port)
 	else:
 		connect_server(port, "--dedicated" in OS.get_cmdline_args())

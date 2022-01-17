@@ -14,20 +14,20 @@ jobs:
     - name: Build Web
       uses: gamedrivendesign/docker-godot-export@gh-action
       with:
-        export-template: HTML5
+        export-template: HTML5-standalone
         output-filename: index.html
     - uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./output
-    - uses: appleboy/scp-action@master
-      with:
-        host: gamedev.paulmethfessel.com
-        username: deploy
-        key: ${{ secrets.KEY }}
-        source: ./output/*
-        target: /home/deploy/godot-servers/${{ github.event.repository.name }}
-        strip_components: 1
+#    - uses: appleboy/scp-action@master
+#      with:
+#        host: gamedev.paulmethfessel.com
+#        username: deploy
+#        key: ${{ secrets.KEY }}
+#        source: ./output/*
+#        target: /home/deploy/godot-servers/${{ github.event.repository.name }}
+#        strip_components: 1
 
   deploy_server:
     name: Export Server
